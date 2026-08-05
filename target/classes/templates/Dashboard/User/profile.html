@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{Dashboard/fragments/header :: header('Profile')}"></head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+            <div th:replace="~{Dashboard/fragments/sidebar :: sidebar}"></div>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                    <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Breadcrumb -->
+                    <div th:replace="~{Dashboard/fragments/breadcrumb :: breadcrumb}"></div>
+
+                    <!-- Page Header -->
+                    <div class="mb-4">
+
+                        <h1 class="h2 font-weight-bold text-dark">
+                            My Profile
+                        </h1>
+
+                        <p class="text-muted">
+                            Manage your personal information and account details.
+                        </p>
+
+                    </div>
+
+                    <form th:action="@{/profile}" method="post" enctype="multipart/form-data">
+
+                        <div class="row mb-4">
+
+                            <!-- Upload Photo Card -->
+                            <div class="col-lg-8">
+
+                                <div class="card shadow-sm border-0">
+
+                                    <div class="card-body">
+
+                                        <div class="row mb-4">
+                                            <div class="col-md-4 mt-3 text-center border-end profile-divider">
+                                                <div class="profile-avatar-wrapper">
+                                                    <img th:src="${profile_picture != null} ? @{'/uploads/profile/'
+                                                + ${profile_picture}} : @{'/img/user-avatar-3.png'}"
+                                                     class="rounded-circle shadow"
+                                                     style="width:180px;
+                                             height:180px;
+                                             object-fit:cover;
+                                             border:4px solid #ff6b00;">
+                                                    <button type="button" class="avatar-camera-btn">
+                                                        <i class="bi bi-camera-fill"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <label for="profilePicture"
+                                                           class="btn btn-outline-primary">
+                                                        <i class="bi bi-upload ms-2"></i>
+                                                        Upload New Photo
+                                                    </label>
+
+                                                    <input type="file"
+                                                           id="profilePicture"
+                                                           name="profilePicture"
+                                                           style="display:none;">
+                                                </div>
+
+                                            </div>
+
+                                            <!-- User Details Card-->
+                                            <div class="col-md-8">
+
+                                                <h2 class="font-weight-bold">
+                                                    <span th:text="${username}"></span>
+                                                </h2>
+
+                                                <span class="badge-admin px-3 py-2 mb-3">
+                            <span th:text="${user_role}"></span>
+                        </span>
+
+                                                <div class="mt-4">
+
+                                                    <p>
+                                                        <i class="bi bi-envelope ms-2"></i>
+                                                        <span th:text="${email}"></span>
+                                                    </p>
+
+                                                    <p>
+                                                        <i class="bi bi-calendar-event ms-2"></i>
+                                                        Joined <span th:text="${created_at}"></span>
+                                                    </p>
+
+                                                    <p>
+                                                        <i class="bi bi-clock ms-2"></i>
+                                                        Last Login: <span th:text="${updated_at}"></span>
+                                                    </p>
+
+                                                    <p>
+                                                        <i class="bi bi-geo-alt ms-2"></i>
+                                                        <span th:text="${city}"></span>, <span th:text="${country}"></span>
+                                                    </p>
+
+                                                </div>
+
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            </div>
+
+
+
+
+                            <!-- ABOUT ME PANEL -->
+                            <div class="col-lg-4">
+                                <div class="card shadow-sm border-0 h-100">
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h4 class="font-weight-bold">About Me</h4>
+
+                                        </div>
+
+                                        <p class="text-muted"
+                                           th:text="${bio}">
+                                        </p>
+
+                                        <hr>
+
+                                        <div class="row text-center">
+
+                                            <div class="col-6">
+                                                <div class="mb-2">
+                                                    <i class="bi bi-file-post text-danger text-white fs-1"></i>
+                                                </div>
+
+                                                <h4 class="font-weight-bold">128</h4>
+
+                                                <small class="text-muted">
+                                                    Total Posts
+                                                </small>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="mb-2">
+                                                    <i class="bi bi-chat-dots-fill text-danger text-white fs-1"></i>
+                                                </div>
+
+                                                <h4 class="font-weight-bold">342</h4>
+
+                                                <small class="text-muted">
+                                                    Total Comments
+                                                </small>
+                                            </div>
+
+                                        </div>
+
+                                        <hr>
+
+                                        <button class="btn btn-outline-primary btn-block">
+                                            View My Posts
+                                            <i class="bi bi-arrow-right ms-2"></i>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        <!-- Row End -->
+                        </div>
+
+                        <div class="row mb-4 mt-2">
+                            <!-- Personal Information PANEL -->
+                            <div class="col-lg-8">
+                                <div class="card shadow-sm border-0">
+
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+
+                                            <h4 class="section-title">
+                                                Personal Information
+                                            </h4>
+
+
+
+                                        </div>
+
+                                        <table class="table">
+
+                                            <tr>
+                                                <td width="35%">
+                                                    <strong>First Name</strong>
+                                                </td>
+                                                <td><span th:text="${first_name}"></span></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>Last Name</strong>
+                                                </td>
+                                                <td><span th:text="${last_name}"></span></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>Username</strong>
+                                                </td>
+                                                <td><span th:text="${username}"></span></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>Email Address</strong>
+                                                </td>
+                                                <td><span th:text="${email}"></span></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>Phone Number</strong>
+                                                </td>
+                                                <td><span th:text="${phone_number}"></span></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>Bio</strong>
+                                                </td>
+                                                <td>
+                                                    <span th:text="${bio}"></span>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+
+                                        <button class="btn btn-primary">
+                                            Edit Information
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Account Summary PANEL -->
+                            <div class="col-lg-4">
+                                <div class="card shadow-sm border-0 h-100">
+
+                                    <div class="card-body">
+
+                                        <h4 class="section-title mb-4">
+                                            Account Summary
+                                        </h4>
+
+                                        <div class="account-summary-row">
+                                            <span>
+                                                <i class="bi bi-person-badge account-icon"></i>
+                                                User Role
+                                            </span>
+
+                                            <span class="badge-admin">
+                                                <span th:text="${user_role}"></span>
+                                            </span>
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="account-summary-row">
+                                            <span>
+                                                <i class="bi bi-person-check account-icon"></i>
+                                                Account Status
+                                            </span>
+
+                                            <span class="badge badge-success">
+                                                Active
+                                            </span>
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="account-summary-row">
+                                            <span>
+                                                <i class="bi bi-shield-lock ms-2 account-icon"></i>
+                                                Two-Factor Authentication
+                                            </span>
+
+                                            <span class="badge badge-success">
+                                                Enabled
+                                            </span>
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="account-summary-row">
+                                            <span>
+                                                <i class="bi bi-envelope-check ms-2 account-icon"></i>
+                                                Email Verified
+                                            </span>
+
+                                            <span class="badge badge-success">
+                                                Verified
+                                            </span>
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="account-summary-row">
+                                            <span>
+                                                <i class="bi bi-key ms-2 account-icon"></i>
+                                                Password Last Changed
+                                            </span>
+
+                                            <span>
+                                                May 1, 2025
+                                            </span>
+                                        </div>
+
+                                        <button class="btn btn-outline-primary btn-block">
+                                            <i class="bi bi-key ms-2 account-icon"></i>
+                                            Change Password
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                        </div>
+
+
+
+                    </form>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Copyright -->
+                <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
+            <!-- End of Copyright -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+        <div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
+
+    <!-- Logout Modal-->
+        <div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
+
+    <!-- Footer -->
+    <div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+    <!-- End of Footer -->
+
+<!--Upload Image-->
+
+    <script th:inline="javascript">
+        document.getElementById("profilePicture")
+            .addEventListener("change", function () {
+                if (this.files.length > 0) {
+                    this.form.submit();
+                }
+            });
+
+    </script>
+
+<!-- Camera button also triggers file upload -->
+
+<script th:inline="javascript">
+    document.querySelector(".avatar-camera-btn")
+        .addEventListener("click", function () {
+            document.getElementById("profilePicture").click();
+        });
+</script>
+
+</body>
+
+</html>

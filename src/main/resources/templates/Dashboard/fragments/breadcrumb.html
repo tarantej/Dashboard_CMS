@@ -1,0 +1,15 @@
+<div th:fragment="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a th:href="@{/dashboard}">
+                    Dashboard
+                </a>
+            </li>
+
+            <li class="breadcrumb-item active" aria-current="page">
+                <span th:text="${pageTitle}"></span>
+            </li>
+        </ol>
+    </nav>
+</div>

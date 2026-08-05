@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{Dashboard/fragments/header :: header('Notifications')}"></head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div th:replace="~{Dashboard/fragments/sidebar :: sidebar}"></div>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+            <!-- Topbar -->
+            <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Breadcrumb -->
+                <div th:replace="~{Dashboard/fragments/breadcrumb :: breadcrumb}"></div>
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-4 text-gray-800">Notifications</h1>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Copyright -->
+        <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
+        <!-- End of Copyright -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
+
+<!-- Logout Modal-->
+<div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
+
+<!-- Footer -->
+<div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+<!-- End of Footer -->
+
+</body>
+
+</html>

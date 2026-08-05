@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Password Updated | Dashboard CMS</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- SB Admin -->
+    <link th:href="@{/css/sb-admin-2.css}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body class="success-page">
+
+<header class="top-header">
+
+    <div class="logo-section">
+        <img th:src="@{/img/logo.png}" alt="Dashboard CMS">
+    </div>
+
+    <div class="theme-toggle">
+        <i class="bi bi-sun"></i>
+        <span>Light Mode</span>
+    </div>
+
+</header>
+
+
+<main class="success-wrapper">
+
+    <div class="success-icon">
+
+        <div class="icon-ring ring1"></div>
+        <div class="icon-ring ring2"></div>
+
+        <div class="icon-circle">
+            <i class="bi bi-check-lg"></i>
+        </div>
+
+    </div>
+
+    <h1>Password Updated</h1>
+
+    <p class="subtitle">
+        Your password has been updated successfully.
+    </p>
+
+    <p class="description">
+        You can now sign in using your new password.
+    </p>
+
+    <div class="divider">
+
+        <span>Success</span>
+
+    </div>
+
+    <p class="important-text">
+
+        Your account is now protected with your new password.
+        <br><br>
+        For security reasons, your previous reset link has been permanently disabled.
+
+    </p>
+
+    <a th:href="@{/login}" class="login-btn">
+
+        <i class="bi bi-box-arrow-in-left"></i>
+
+        Back to Login
+
+    </a>
+
+    <p class="support">
+
+        Need help?
+
+        <a href="#">Contact Support</a>
+
+    </p>
+
+</main>
+
+<footer class="page-footer">
+
+    <div>
+        © 2025 Dashboard CMS. All rights reserved.
+    </div>
+
+    <div>
+
+        <a href="#">Privacy Policy</a>
+
+        •
+
+        <a href="#">Terms &amp; Conditions</a>
+
+    </div>
+
+</footer>
+
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/scripts.js}"></script>
+
+</body>
+</html>

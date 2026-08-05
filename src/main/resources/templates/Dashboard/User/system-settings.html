@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{Dashboard/fragments/header :: header('System Settings')}"></head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+            <div th:replace="~{Dashboard/fragments/sidebar :: sidebar}"></div>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                    <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Breadcrumb -->
+                    <div th:replace="~{Dashboard/fragments/breadcrumb :: breadcrumb}"></div>
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">System Settings</h1>
+
+                    <!-- Row 1 -->
+                    <div class="row mb-4">
+
+                        <!-- LEFT MENU -->
+                        <div class="col-lg-4">
+
+                            <div class="card shadow-sm border-0 h-100">
+
+                                <div class="card-body">
+
+                                    <div class="list-group list-group-flush">
+
+                                        <a href="#" onclick="showSection('general-section',this)" class="list-group-item list-group-item-action border-0 rounded settings-active mb-2">
+                                            <div class="d-flex align-items-start">
+                                                <i class="bi bi-gear text-primary me-3 mt-1"></i>
+
+                                                <div>
+                                                    <div class="fw-bold" id="general-settings">
+                                                        General
+                                                    </div>
+
+                                                    <small class="text-muted">
+                                                        Configure your website information.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" onclick="showSection('email-section',this)" class="list-group-item list-group-item-action border-0 mb-2">
+                                            <div class="d-flex align-items-start">
+                                                <i class="bi bi-envelope me-3 mt-1"></i>
+
+                                                <div>
+                                                    <div class="fw-bold" id="email-settings">
+                                                        Email
+                                                    </div>
+
+                                                    <small class="text-muted">
+                                                        Configure outgoing emails
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" onclick="showSection('localization-section',this)" class="list-group-item list-group-item-action border-0 mb-2">
+                                            <div class="d-flex align-items-start">
+                                                <i class="bi bi-globe me-3 mt-1"></i>
+
+                                                <div>
+                                                    <div class="fw-bold" id="localization-settings">
+                                                        Localization
+                                                    </div>
+
+                                                    <small class="text-muted">
+                                                        Manage notification preferences
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" onclick="showSection('maintenance-section',this)" class="list-group-item list-group-item-action border-0 text-danger">
+                                            <div class="d-flex align-items-start">
+                                                <i class="bi bi-tools me-3 mt-1"></i>
+
+                                                <div>
+                                                    <div class="fw-bold" id="maintenance-settings">
+                                                        Maintenance
+                                                    </div>
+
+                                                    <small class="text-muted">
+                                                        Backups and system tools
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </a>
+<!--                                        <a href="#" class="list-group-item list-group-item-action border-0 mb-2">-->
+<!--                                            <div class="d-flex align-items-start">-->
+<!--                                                <i class="bi bi-palette me-3 mt-1"></i>-->
+
+<!--                                                <div>-->
+<!--                                                    <div class="fw-bold">-->
+<!--                                                        Appearance-->
+<!--                                                    </div>-->
+
+<!--                                                    <small class="text-muted">-->
+<!--                                                        Customize your dashboard-->
+<!--                                                    </small>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </a>-->
+
+<!--                                        <a href="#" class="list-group-item list-group-item-action border-0 mb-2">-->
+<!--                                            <div class="d-flex align-items-start">-->
+<!--                                                <i class="bi bi-credit-card me-3 mt-1"></i>-->
+
+<!--                                                <div>-->
+<!--                                                    <div class="fw-bold">-->
+<!--                                                        Billing-->
+<!--                                                    </div>-->
+
+<!--                                                    <small class="text-muted">-->
+<!--                                                        Manage your subscription-->
+<!--                                                    </small>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </a>-->
+
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-8">
+
+                            <!-- General Settings -->
+
+                            <div id="general-section" class="settings-section">
+
+                                <div class="card shadow-sm border-0">
+                                    <div class="card-body">
+
+                                        <h4 class="fw-bold mb-2">
+                                            General Settings
+                                        </h4>
+
+                                        <p class="text-muted mb-4">
+                                            Configure your website information.
+                                        </p>
+
+                                        <div class="mb-3">
+                                            <label class="form-label fw-semibold">
+                                                Site Name
+                                            </label>
+
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Dashboard CMS">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label fw-semibold">
+                                                Site Tagline
+                                            </label>
+
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Manage your content easily">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label fw-semibold">
+                                                Site URL
+                                            </label>
+
+                                            <input
+                                                    type="url"
+                                                    class="form-control"
+                                                    placeholder="https://example.com">
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="form-label fw-semibold">
+                                                Admin Email
+                                            </label>
+
+                                            <input
+                                                    type="email"
+                                                    class="form-control"
+                                                    placeholder="admin@example.com">
+                                        </div>
+
+                                        <button class="btn btn-primary-orange">
+                                            <i class="bi bi-check-square me-2"></i>
+                                            Save Settings
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Email Settings Section -->
+
+                            <div id="email-section" class="settings-section d-none">
+
+                                <div class="card shadow-sm border-0">
+                                    <div class="card-body">
+
+                                        <h4 class="fw-bold mb-2">
+                                            Email Settings
+                                        </h4>
+
+                                        <p class="text-muted mb-4">
+                                            Configure SMTP email settings.
+                                        </p>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">
+                                                    SMTP Host
+                                                </label>
+
+                                                <input type="text"
+                                                       class="form-control"
+                                                       placeholder="smtp.gmail.com">
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">
+                                                    SMTP Port
+                                                </label>
+
+                                                <input type="number"
+                                                       class="form-control"
+                                                       placeholder="587">
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">
+                                                    SMTP Username
+                                                </label>
+
+                                                <input type="text"
+                                                       class="form-control">
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">
+                                                    SMTP Password
+                                                </label>
+
+                                                <input type="password"
+                                                       class="form-control">
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">
+                                                    Sender Name
+                                                </label>
+
+                                                <input type="text"
+                                                       class="form-control">
+                                            </div>
+
+                                            <div class="col-md-6 mb-4">
+                                                <label class="form-label fw-semibold">
+                                                    Sender Email
+                                                </label>
+
+                                                <input type="email"
+                                                       class="form-control">
+                                            </div>
+
+                                        </div>
+
+                                        <button class="btn btn-primary-orange">
+                                            <i class="bi bi-envelope-check me-2"></i>
+                                            Save Email Settings
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!--  Localization Settings -->
+                            <div id="localization-section" class="settings-section d-none">
+
+                                <div class="card shadow-sm border-0">
+                                    <div class="card-body">
+
+                                        <h4 class="fw-bold mb-2">
+                                            Localization Settings
+                                        </h4>
+
+                                        <p class="text-muted mb-4">
+                                            Configure language and regional settings.
+                                        </p>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">
+                                                    Language
+                                                </label>
+
+                                                <select class="form-select">
+                                                    <option>English</option>
+                                                    <option>Hindi</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">
+                                                    Time Zone
+                                                </label>
+
+                                                <select class="form-select">
+                                                    <option>Asia/Kolkata</option>
+                                                    <option>UTC</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">
+                                                    Date Format
+                                                </label>
+
+                                                <select class="form-select">
+                                                    <option>DD/MM/YYYY</option>
+                                                    <option>MM/DD/YYYY</option>
+                                                    <option>YYYY-MM-DD</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-6 mb-4">
+                                                <label class="form-label fw-semibold">
+                                                    Time Format
+                                                </label>
+
+                                                <select class="form-select">
+                                                    <option>24 Hour</option>
+                                                    <option>12 Hour</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                        <button class="btn btn-primary-orange">
+                                            <i class="bi bi-globe me-2"></i>
+                                            Save Localization
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Maintenance Settings  -->
+
+                            <div id="maintenance-section" class="settings-section d-none">
+
+                                <div class="card shadow-sm border-0">
+                                    <div class="card-body">
+
+                                        <h4 class="fw-bold mb-2">
+                                            Maintenance
+                                        </h4>
+
+                                        <p class="text-muted mb-4">
+                                            Manage backups and system tools.
+                                        </p>
+
+                                        <div class="d-flex flex-wrap gap-2 mb-4">
+
+                                            <button class="btn btn-outline-primary">
+                                                <i class="bi bi-download me-2"></i>
+                                                Export Settings
+                                            </button>
+
+                                            <button class="btn btn-outline-success">
+                                                <i class="bi bi-database me-2"></i>
+                                                Backup Database
+                                            </button>
+
+                                            <button class="btn btn-outline-secondary">
+                                                <i class="bi bi-trash3 me-2"></i>
+                                                Clear Cache
+                                            </button>
+
+                                        </div>
+
+                                        <hr>
+
+                                        <h5 class="text-danger mt-4">
+                                            Reset System
+                                        </h5>
+
+                                        <p class="text-muted">
+                                            Reset configuration settings to their default values.
+                                        </p>
+
+                                        <button class="btn btn-danger">
+                                            <i class="bi bi-exclamation-triangle me-2"></i>
+                                            Reset Configuration
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        <!-- End .col-lg-8 -->
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Copyright -->
+                <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
+            <!-- End of Copyright -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+        <div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
+
+    <!-- Logout Modal-->
+        <div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
+
+    <!-- Footer -->
+    <div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+    <!-- End of Footer -->
+
+<!-- Account Settings Section Toggle -->
+
+    <script>
+        function showSection(sectionId, menuItem) {
+
+            document.querySelectorAll('.settings-section')
+                .forEach(section => {
+                    section.classList.add('d-none');
+                });
+
+            document.querySelectorAll('.list-group-item')
+                .forEach(item => {
+                    item.classList.remove('settings-active');
+                });
+
+            document.getElementById(sectionId)
+                .classList.remove('d-none');
+
+            menuItem.classList.add('settings-active');
+        }
+    </script>
+
+</body>
+
+</html>

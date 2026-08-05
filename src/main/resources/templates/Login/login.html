@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login | Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/sb-admin-2.css}" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+
+                        <!-- Nested Row within Card Body -->
+                        <div class="row g-0 auth-wrapper">
+
+                            <!-- Left Branding Panel -->
+                            <div class="col-lg-6 auth-brand-panel">
+
+                                <div class="auth-brand-content">
+
+                                    <img th:src="@{/img/logo-white.png}" alt="Dashboard CMS" class="auth-logo">
+
+<!--                                    <h2>Dashboard CMS</h2>-->
+                                    <div class="brand-divider"></div>
+                                    <p class="auth-tagline">
+                                        Manage • Analyze • Grow
+                                    </p>
+
+                                    <p class="auth-description">
+                                        A powerful and intuitive platform to manage your
+                                        content, users and analytics from one central dashboard.
+                                    </p>
+
+                                    <div class="tech-grid">
+
+                                        <div class="tech-card">
+                                            <img th:src="@{/img/Java.svg}" alt="Java 25" class="icon">
+                                                <span>Java 25</span>
+                                        </div>
+
+                                        <div class="tech-card">
+                                            <img th:src="@{/img/Spring.svg}" alt="Spring Boot" class="icon">
+                                                <span>Spring Boot</span>
+                                        </div>
+
+                                        <div class="tech-card">
+                                            <img th:src="@{/img/thymeleaf.png}" alt="Thymeleaf" class="icon">
+                                                <span>Thymeleaf</span>
+                                        </div>
+
+                                        <div class="tech-card">
+                                            <img th:src="@{/img/Bootstrap.svg}" alt="Bootstrap" class="icon">
+                                                <span>Bootstrap 5</span>
+                                        </div>
+
+                                        <div class="tech-card">
+                                            <img th:src="@{/img/PostgresSQL.svg}" alt="PostgreSQL" class="icon">
+                                                <span>PostgresSQL</span>
+                                        </div>
+
+                                        <div class="tech-card">
+                                            <img th:src="@{/img/Apache-Maven.svg}" alt="Apache Maven" class="icon">
+                                                <span>Apache Maven</span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-6 auth-form-panel">
+                                <div class="auth-form-content">
+                                    <h3>Welcome Back</h3>
+                                    <p class="text-muted">Sign in to Dashboard CMS</p>
+                                    <div th:if="${error}" class="alert alert-danger">
+
+                                        <span th:text="${error}"></span>
+
+                                    </div>
+                                    <form th:action="@{/login}" method="post">
+
+                                        <div class="mb-3 input-icon-wrapper">
+                                            <i class="bi bi-envelope input-icon"></i>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="username"
+                                                   name="username"
+                                                   placeholder="Username">
+                                        </div>
+                                        <div class="mb-3 input-icon-wrapper">
+                                            <i class="bi bi-lock input-icon"></i>
+                                            <input type="password"
+                                                   class="form-control"
+                                                   id="password"
+                                                   name="password"
+                                                   placeholder="Password">
+                                        </div>
+
+                                        <div class="d-flex justify-content-between mb-4">
+
+                                            <div class="form-check">
+                                                <input class="form-check-input"
+                                                       type="checkbox"
+                                                       id="rememberMe">
+
+                                                <label class="form-check-label"
+                                                       for="rememberMe">
+                                                    Remember Me
+                                                </label>
+                                            </div>
+                                            <a th:href="@{/forgot-password}">
+                                                Forgot Password?
+                                            </a>
+
+                                        </div>
+                                        <button type="submit"
+                                                class="btn btn-primary w-100 auth-login-btn">
+                                            Sign In
+                                        </button>
+
+                                    </form>
+
+                                    <div class="auth-divider">
+                                        <span>OR</span>
+                                    </div>
+
+                                    <div class="social-login">
+
+                                        <a href="/oauth2/authorization/github" class="oauth-btn github-btn">
+                                            <img src="/img/GitHub.svg" alt="GitHub">
+                                            <span>Continue with GitHub</span>
+                                        </a>
+
+                                        <a href="/oauth2/authorization/google" class="oauth-btn google-btn">
+                                            <img src="/img/Google.svg" alt="Google">
+                                            <span>Continue with Google</span>
+                                        </a>
+
+                                    </div>
+
+<!--                                    <div class="text-center">-->
+<!--                                        <a class="small" th:href="@{/forgot-password}">Forgot Password?</a>-->
+<!--                                    </div>-->
+<!--                                    <div class="text-center">-->
+<!--                                        <a class="small" th:href="@{/register}">Create an Account!</a>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script th:href="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:href="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script th:href="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+</body>
+
+</html>
