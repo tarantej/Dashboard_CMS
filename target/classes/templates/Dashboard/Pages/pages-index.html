@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{Dashboard/fragments/header :: header('Pages')}"></head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div th:replace="~{Dashboard/fragments/sidebar :: sidebar}"></div>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Breadcrumb -->
+                <div th:replace="~{Dashboard/fragments/breadcrumb :: breadcrumb}"></div>
+
+                <!-- Page Heading -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <div>
+                        <h1 class="h3 mb-1 font-weight-bold text-dark">
+                            Pages
+                        </h1>
+
+                        <p class="text-muted mb-0">
+                            Create and manage your website pages.
+                        </p>
+                    </div>
+
+                    <a th:href="@{/dashboard/pages/add}"
+                       class="btn btn-primary">
+                        <i class="fas fa-plus mr-2"></i>
+                        Add New Page
+                    </a>
+
+                </div>
+
+                <!-- Pages Content -->
+                <div class="card shadow-sm mb-4">
+
+                    <div class="card-body">
+
+                        <!-- Pages Table -->
+                        <div class="table-responsive">
+
+                            <table class="table table-hover align-middle">
+
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Slug</th>
+                                    <th>URL</th>
+                                    <th>Template</th>
+                                    <th>Status</th>
+                                    <th>Last Modified</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+
+                                <tr th:each="page : ${pages}">
+
+                                    <!-- Page Title -->
+                                    <td>
+                                        <strong th:text="${page.pageTitle}">
+                                            Page Title
+                                        </strong>
+                                    </td>
+
+                                    <!-- Slug -->
+                                    <td>
+                            <span th:text="${page.pageSlug}">
+                                page-slug
+                            </span>
+                                    </td>
+
+                                    <!-- URL -->
+                                    <td>
+                            <span th:text="${page.pageUrl}">page-url</span>
+                                    </td>
+
+                                    <!-- Template -->
+                                    <td>
+                            <span class="badge badge-info"
+                                  th:text="${page.pageTemplate}">
+                                DEFAULT
+                            </span>
+                                    </td>
+
+                                    <!-- Status -->
+                                    <td>
+                            <span class="badge badge-success"
+                                  th:if="${page.pageStatus == 'PUBLISHED'}">
+                                Published
+                            </span>
+
+                                        <span class="badge badge-warning"
+                                              th:if="${page.pageStatus == 'DRAFT'}">
+                                Draft
+                            </span>
+
+                                        <span class="badge badge-secondary"
+                                              th:if="${page.pageStatus == 'TRASH'}">
+                                Trash
+                            </span>
+                                    </td>
+
+                                    <!-- Last Modified -->
+                                    <td>
+                            <span th:text="${page.updatedAt != null
+                                ? #temporals.format(page.updatedAt, 'dd MMM yyyy')
+                                : '-'}">
+                            </span>
+                                    </td>
+
+                                    <!-- Actions -->
+                                    <td class="text-center">
+
+                                        <!-- View Page -->
+                                        <a th:href="${page.pageUrl}"
+                                           target="_blank"
+                                           title="View Page"
+                                           class="btn btn-sm btn-outline-info">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <!-- Edit -->
+                                        <a th:href="@{/dashboard/pages/edit/{id}(id=${page.pageId})}"
+                                           class="btn btn-sm btn-outline-primary"
+                                           title="Edit Page">
+
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <!-- Move to Trash -->
+                                        <form th:action="@{/dashboard/pages/trash/{id}(id=${page.pageId})}"
+                                              method="post"
+                                              class="d-inline"
+                                              th:if="${page.pageStatus != 'TRASH'}">
+
+                                            <button type="submit"
+                                                    class="btn btn-sm btn-outline-danger"
+                                                    title="Move to Trash">
+
+                                                <i class="bi bi-trash"></i>
+
+                                            </button>
+
+                                        </form>
+
+                                        <!-- Permanently Delete -->
+                                        <form th:action="@{/dashboard/pages/delete/{id}(id=${page.pageId})}"
+                                              method="post"
+                                              class="d-inline"
+                                              th:if="${page.pageStatus == 'TRASH'}">
+
+                                            <button type="submit"
+                                                    class="btn btn-sm btn-danger"
+                                                    title="Delete Permanently"
+                                                    onclick="return confirm('Permanently delete this page?');">
+
+                                                <i class="bi bi-trash"></i>
+
+                                            </button>
+
+                                        </form>
+
+                                    </td>
+
+                                </tr>
+
+                                <!-- Empty State -->
+                                <tr th:if="${#lists.isEmpty(pages)}">
+                                    <td colspan="7" class="text-center text-muted py-4">
+                                        No pages found.
+                                    </td>
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Copyright -->
+        <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top -->
+<div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
+
+<!-- Logout Modal -->
+<div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
+
+<!-- Footer -->
+<div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+
+</body>
+</html>

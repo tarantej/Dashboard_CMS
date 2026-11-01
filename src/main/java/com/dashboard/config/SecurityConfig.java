@@ -30,41 +30,59 @@ public class SecurityConfig
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        // Dashboard - Pages (Admin only)
                         .requestMatchers(
-                                "/login",
-                                "/profile",
-                                "/system-settings",
-                                "/account-settings",
-                                "/messages",
-                                "/notifications",
-                                "/activity-log",
+                                "/dashboard/pages/**"
+                        ).hasAnyRole("SUPER_ADMIN", "ADMINISTRATOR")
+
+                        // Dashboard - Users (Admin only)
+                        .requestMatchers(
+                                "/dashboard/users/**"
+                        ).hasAnyRole("SUPER_ADMIN", "ADMINISTRATOR")
+
+                        .requestMatchers("/projects/**")
+                        .authenticated()
+                        // Dashboard - General
+                        .requestMatchers(
+                                "/dashboard",
                                 "/blank",
+                                "/profile",
+                                "/account-settings",
+                                "/system-settings",
+                                "/activity-log",
+                                "/notifications",
+                                "/messages",
+                                "/projects/**"
+                        ).authenticated()
+
+                        // Public routes
+                        .requestMatchers(
+                                "/",
+                                "/login",
                                 "/forgot-password",
                                 "/reset-password",
                                 "/oauth-signup",
                                 "/oauth-success",
-                                "/success",
+                                "/success"
+                        ).permitAll()
+
+                        // Static resources
+                        .requestMatchers(
                                 "/css/**",
                                 "/js/**",
                                 "/img/**",
                                 "/uploads/**",
-                                "/400",
-                                "/401",
-                                "/403",
-                                "/404",
-                                "/405",
-                                "/408",
-                                "/409",
-                                "/422",
-                                "/429",
-                                "/500",
-                                "/502",
-                                "/503",
                                 "/sb-admin-templates/**"
-                        )
-                        .permitAll()
-                        .anyRequest()
-                        .authenticated()
+                        ).permitAll()
+
+                        // Error pages
+                        .requestMatchers(
+                                "/400", "/401", "/403", "/404",
+                                "/405", "/408", "/409", "/422",
+                                "/429", "/500", "/502", "/503"
+                        ).permitAll()
+
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")

@@ -1,0 +1,314 @@
+
+<div th:fragment="sidebar">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-dark accordion"
+        id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center"
+           th:href="@{/dashboard}"> <img th:src="@{/img/logo-white.png}" alt="Dashboard CMS" width="180"> </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/dashboard}">
+                <i class="bi bi-house-door"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+
+        <!-- Content -->
+        <div class="sidebar-heading">
+            Content
+        </div>
+
+        <li class="nav-item">
+
+            <a class="nav-link collapsed"
+               href="#"
+               data-bs-toggle="collapse"
+               data-bs-target="#collapseContent">
+
+                <i class="bi bi-folder"></i>
+                <span>Content</span>
+
+                <i class="bi bi-chevron-right ms-auto"></i>
+            </a>
+
+            <div id="collapseContent"
+                 class="collapse"
+                 data-bs-parent="#accordionSidebar">
+
+                <div class="collapse-inner">
+
+                    <!-- Posts -->
+
+                    <div class="submenu-item">
+
+                        <a class="nav-link collapsed"
+                           href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapsePosts">
+
+                            <span>Posts</span>
+
+                            <i class="bi bi-chevron-right ms-auto"></i>
+                        </a>
+
+                        <div id="collapsePosts" class="collapse">
+
+                            <a class="collapse-item" href="#">
+                                All Posts
+                            </a>
+
+                            <a class="collapse-item" href="#">
+                                Add Post
+                            </a>
+
+                            <a class="collapse-item" href="#">
+                                Comments
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Pages -->
+
+                    <div class="submenu-item">
+
+                        <a class="nav-link collapsed"
+                           href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapsePages">
+
+                            <span>Pages</span>
+
+                            <i class="bi bi-chevron-right ms-auto"></i>
+                        </a>
+
+                        <div id="collapsePages" class="collapse">
+
+                            <a class="collapse-item" th:href="@{/dashboard/pages}">
+                                All Pages
+                            </a>
+
+                            <a class="collapse-item" th:href="@{/dashboard/pages/add}">
+                                <i class="bi bi-plus-lg mr-2"></i>
+                                Add Page
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Projects -->
+
+                    <div class="submenu-item">
+
+                        <a class="nav-link collapsed"
+                           href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapseProjects">
+
+                            <span>Projects</span>
+
+                            <i class="bi bi-chevron-right ms-auto"></i>
+                        </a>
+
+                        <div id="collapseProjects" class="collapse">
+
+                            <a class="collapse-item" href="#">
+                                All Projects
+                            </a>
+
+                            <a class="collapse-item" href="#">
+                                Add Project
+                            </a>
+
+                            <a class="collapse-item" href="#">
+                                Galleries
+                            </a>
+
+                            <a class="collapse-item" href="#">
+                                Add Gallery
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Categories -->
+
+                    <a class="collapse-item" href="#">
+                        Categories
+                    </a>
+
+                    <!-- Tags -->
+
+                    <a class="collapse-item" href="#">
+                        Tags
+                    </a>
+
+                    <!-- Media Library -->
+
+                    <a class="collapse-item" href="#">
+                        Media Library
+                    </a>
+
+                    <!-- End .collapse-inner  -->
+                </div>
+
+                    <hr class="sidebar-divider">
+
+
+
+                    <li class="nav-item">
+
+                        <!-- Users -->
+                        <div class="sidebar-heading">
+                            Users
+                        </div>
+
+                        <a class="nav-link collapsed"
+                           href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapseUsers">
+
+                            <i class="bi bi-people"></i>
+                            <span>Users</span>
+
+                            <i class="bi bi-chevron-right ms-auto"></i>
+                        </a>
+
+                        <div id="collapseUsers"
+                             class="collapse"
+                             data-bs-parent="#accordionSidebar">
+
+                            <div class="collapse-inner">
+
+                                <a class="collapse-item" href="#">
+                                    Users
+                                </a>
+
+                                <a class="collapse-item" href="#">
+                                    Add User
+                                </a>
+
+                                <a class="collapse-item" href="#">
+                                    Roles & Permissions
+                                </a>
+
+                                <a class="collapse-item" th:href="@{/activity-log}">
+                                    Activity Logs
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                    <hr class="sidebar-divider">
+
+                <!-- Settings -->
+                        <div class="sidebar-heading">
+                            Settings
+                        </div>
+
+
+                    <li class="nav-item">
+
+                        <a class="nav-link collapsed"
+                           href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapseSettings">
+
+                            <i class="bi bi-gear"></i>
+                            <span>Settings</span>
+
+                            <i class="bi bi-chevron-right ms-auto"></i>
+                        </a>
+
+                        <div id="collapseSettings"
+                             class="collapse"
+                             data-bs-parent="#accordionSidebar">
+
+                            <div class="collapse-inner">
+
+                                <a class="collapse-item" th:href="@{/profile}">
+                                    Profile
+                                </a>
+
+                                <a class="collapse-item" th:href="@{/account-settings}">
+                                    Account Settings
+                                </a>
+
+                                <a class="collapse-item" th:href="@{/system-settings}">
+                                    System Settings
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+
+                    <hr class="sidebar-divider">
+
+                    <!-- Logout -->
+
+                    <li class="nav-item">
+
+                        <a class="nav-link text-danger"
+                           href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+
+                            <i class="bi bi-box-arrow-right"></i>
+
+                            <span>Logout</span>
+
+                        </a>
+
+                    </li>
+
+
+
+
+
+
+
+        <!-- OTHER -->
+<!--        <div class="sidebar-heading">-->
+<!--            Other-->
+<!--        </div>-->
+
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" th:href="@{/tools}">-->
+<!--                <i class="bi bi-wrench"></i>-->
+<!--                <span>Tools</span>-->
+<!--            </a>-->
+<!--        </li>-->
+
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" th:href="@{/help}">-->
+<!--                <i class="bi bi-question-circle"></i>-->
+<!--                <span>Help & Support</span>-->
+<!--            </a>-->
+<!--        </li>-->
+
+        <hr class="sidebar-divider">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+    </ul>
+
+</div>

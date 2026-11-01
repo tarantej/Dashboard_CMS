@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{Dashboard/fragments/header :: header('Add New Page')}"></head>
+
+<body id="page-top">
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div th:replace="~{Dashboard/fragments/sidebar :: sidebar}"></div>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+            <!-- Topbar -->
+            <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
+
+            <div class="container-fluid">
+
+                <!-- Breadcrumb -->
+                <div th:replace="~{Dashboard/fragments/breadcrumb :: breadcrumb}"></div>
+
+                <!-- Heading -->
+                <div class="mb-4">
+                    <h1 class="h3 font-weight-bold text-dark">
+                        Add New Page
+                    </h1>
+                    <p class="text-muted">
+                        Create a new page for your website.
+                    </p>
+                </div>
+
+                <!-- Page Form -->
+                <form th:action="@{/dashboard/pages/save}"
+                      th:object="${page}"
+                      method="post">
+
+                    <div class="row">
+
+                        <!-- Main Editor -->
+                        <div class="col-lg-8">
+
+                            <div class="card shadow-sm mb-4">
+                                <div class="card-body">
+
+                                    <!-- Page Title -->
+                                    <div class="form-group">
+                                        <label for="pageTitle">
+                                            Page Title <span class="text-danger">*</span>
+                                        </label>
+
+                                        <input type="text"
+                                               id="pageTitle"
+                                               th:field="*{pageTitle}"
+                                               class="form-control"
+                                               placeholder="Enter page title..."
+                                               required>
+                                    </div>
+
+                                    <!-- Page Slug -->
+                                    <div class="form-group">
+                                        <label for="pageSlug">
+                                            Page Slug
+                                        </label>
+
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">/</span>
+                                            </div>
+
+                                            <input type="text"
+                                                   id="pageSlug"
+                                                   th:field="*{pageSlug}"
+                                                   class="form-control"
+                                                   placeholder="page-slug">
+                                        </div>
+
+                                        <small class="form-text text-muted">
+                                            Leave blank to generate automatically from the title.
+                                        </small>
+                                    </div>
+
+                                    <!-- Page URL -->
+                                    <div class="form-group">
+                                        <label for="pageUrl">Page URL</label>
+
+                                        <input type="text"
+                                               id="pageUrl"
+                                               th:field="*{pageUrl}"
+                                               class="form-control"
+                                               placeholder="Generated automatically">
+
+                                        <small class="form-text text-muted">
+                                            Generated automatically from the page template and slug.
+                                            You can edit it if required.
+                                        </small>
+                                    </div>
+
+                                    <!-- Page Content -->
+                                    <div class="form-group">
+                                        <label for="pageContent">
+                                            Page Content
+                                        </label>
+
+                                        <textarea id="pageContent"
+                                                  th:field="*{pageContent}"
+                                                  class="form-control"
+                                                  rows="16"
+                                                  placeholder="Write your page content here...">
+                                        </textarea>
+                                    </div>
+
+                                    <!-- SEO Settings -->
+                                    <div class="card shadow-sm mb-4">
+
+                                        <div class="card-header">
+                                            <i class="bi bi-search mr-2"></i>
+                                            SEO Settings
+                                        </div>
+
+                                        <div class="card-body">
+
+                                            <div class="form-group">
+                                                <label for="metaTitle">Meta Title</label>
+
+                                                <input type="text"
+                                                       id="metaTitle"
+                                                       th:field="*{metaTitle}"
+                                                       class="form-control"
+                                                       placeholder="Enter meta title...">
+
+                                                <small class="form-text text-muted">
+                                                    Recommended: 50–60 characters.
+                                                </small>
+                                            </div>
+
+                                            <div class="form-group mb-0">
+                                                <label for="metaDescription">Meta Description</label>
+
+                                                <textarea id="metaDescription"
+                                                          th:field="*{metaDescription}"
+                                                          class="form-control"
+                                                          rows="4"
+                                                          placeholder="Enter meta description...">
+            </textarea>
+
+                                                <small class="form-text text-muted">
+                                                    Recommended: 150–160 characters.
+                                                </small>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Right Sidebar -->
+                        <div class="col-lg-4">
+
+                            <!-- Publish -->
+                            <div class="card shadow-sm mb-4">
+
+                                <div class="card-header">
+                                    Publish
+                                </div>
+
+                                <div class="card-body">
+
+                                    <div class="form-group">
+                                        <label for="pageStatus">Status</label>
+
+                                        <select id="pageStatus"
+                                                th:field="*{pageStatus}"
+                                                class="form-control">
+
+                                            <option value="DRAFT">Draft</option>
+                                            <option value="PUBLISHED">Published</option>
+
+                                        </select>
+                                    </div>
+
+                                    <button type="submit"
+                                            class="btn btn-primary btn-block">
+                                        <i class="bi bi-save mr-2"></i>
+                                        Save Page
+                                    </button>
+
+                                    <a th:href="@{/dashboard/pages}"
+                                       class="btn btn-outline-secondary btn-block">
+                                        Cancel
+                                    </a>
+
+                                </div>
+                            </div>
+
+                            <!-- Page Template -->
+                            <div class="card shadow-sm mb-4">
+
+                                <div class="card-header">
+                                    Page Template
+                                </div>
+
+                                <div class="card-body">
+
+                                    <label for="pageTemplate">
+                                        Select Template
+                                    </label>
+
+                                    <select id="pageTemplate"
+                                            th:field="*{pageTemplate}"
+                                            class="form-control">
+
+                                        <option value="LANDING">Landing</option>
+                                        <option value="DEFAULT">Default</option>
+                                        <option value="DASHBOARD">Dashboard</option>
+                                        <option value="LOGIN">Login</option>
+
+                                    </select>
+
+                                    <small class="form-text text-muted">
+                                        Choose the layout template for this page.
+                                    </small>
+
+                                </div>
+                            </div>
+
+
+
+                            <!-- Display Order -->
+                            <div class="card shadow-sm mb-4">
+
+                                <div class="card-header">
+                                    Display Order
+                                </div>
+
+                                <div class="card-body">
+
+                                    <input type="number"
+                                           th:field="*{displayOrder}"
+                                           class="form-control"
+                                           min="0">
+
+                                    <small class="form-text text-muted">
+                                        Lower numbers appear first.
+                                    </small>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- Copyright -->
+        <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
+
+    </div>
+
+</div>
+
+<div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
+<div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
+<div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+
+</body>
+</html>

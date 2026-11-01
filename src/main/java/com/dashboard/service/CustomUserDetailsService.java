@@ -1,7 +1,7 @@
 package com.dashboard.service;
 
 import com.dashboard.DashboardUsers;
-import com.dashboard.UserRepository;
+import com.dashboard.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.dashboard.service.MailService;
+import com.dashboard.repository.UserRepository;
 
 @Controller
 
