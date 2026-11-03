@@ -2,7 +2,7 @@ package com.dashboard;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.dashboard.service.UserAdminService;
+import com.dashboard.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,12 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 class UserAdminServiceTests {
 
     @Autowired
-    private UserAdminService userAdminService;
+    private UserService userService;
 
     @Test
     @Transactional(readOnly = true)
     void listsUsersWithoutChangingAuthenticationData() {
-        var users = userAdminService.findUsers(null, PageRequest.of(0, 10));
+        var users = userService.findUsers(null, PageRequest.of(0, 10));
 
         assertThat(users).isNotNull();
         assertThat(users.getContent()).doesNotContainNull();

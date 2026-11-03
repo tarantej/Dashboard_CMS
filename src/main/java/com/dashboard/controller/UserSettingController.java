@@ -1,8 +1,8 @@
-package com.dashboard;
+package com.dashboard.controller;
 
 import java.io.IOException;
-import java.sql.*;
 
+import com.dashboard.DashboardUsers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 

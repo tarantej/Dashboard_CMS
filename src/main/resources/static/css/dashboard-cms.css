@@ -792,14 +792,14 @@ pre code {
 
 .sidebar .collapse-item {
     display: block;
-    color: #cbd5e1;
+    color: #cbd5e1!important;
     padding: .65rem 1rem .65rem 2.5rem;
     text-decoration: none;
     transition: all .2s ease;
 }
 
 .sidebar .collapse-item:hover {
-    color: #ffffff;
+    color: #ff5722!important;
     background: #303946;
 }
 
@@ -948,7 +948,7 @@ pre code {
     width: 0;
     border-right: 1px solid #e3e6f0;
     height: calc(4.375rem - 2rem);
-    margin: auto 6rem;
+    margin: auto 2rem;
 }
 
 /* ---------- Topbar Search---------- */

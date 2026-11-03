@@ -1,10 +1,10 @@
-package com.dashboard;
+package com.dashboard.controller;
 
 import java.sql.*;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.dashboard.service.CustomUserDetailsService;
+import com.dashboard.DashboardUsers;
 import com.dashboard.service.ImageDownloadService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ResponseBody;
 import com.dashboard.service.MailService;
 import com.dashboard.repository.UserRepository;
 

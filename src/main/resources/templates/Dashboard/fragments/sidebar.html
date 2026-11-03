@@ -167,10 +167,10 @@
                     <hr class="sidebar-divider">
 
 
+                <!-- Users -->
 
                     <li class="nav-item">
 
-                        <!-- Users -->
                         <div class="sidebar-heading">
                             Users
                         </div>
@@ -192,17 +192,19 @@
 
                             <div class="collapse-inner">
 
-                                <a class="collapse-item" href="#">
-                                    Users
+                                <a class="collapse-item"
+                                   th:href="@{/admin/users}">
+                                    All Users
                                 </a>
 
-                                <a class="collapse-item" href="#">
-                                    Add User
+                                <a class="collapse-item"
+                                   th:href="@{/admin/users/add}">
+                                    Add New User
                                 </a>
 
-                                <a class="collapse-item" href="#">
-                                    Roles & Permissions
-                                </a>
+<!--                                <a class="collapse-item" href="#">-->
+<!--                                    Roles & Permissions-->
+<!--                                </a>-->
 
                                 <a class="collapse-item" th:href="@{/activity-log}">
                                     Activity Logs

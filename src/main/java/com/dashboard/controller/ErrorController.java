@@ -1,4 +1,4 @@
-package com.dashboard;
+package com.dashboard.controller;
 
 
 import org.springframework.stereotype.Controller;

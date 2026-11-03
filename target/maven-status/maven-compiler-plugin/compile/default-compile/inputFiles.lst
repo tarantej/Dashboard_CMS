@@ -1,12 +1,15 @@
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\config\OAuth2LoginSuccessHandler.java
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\config\SecurityConfig.java
+C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\controller\DashboardController.java
+C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\controller\ErrorController.java
+C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\controller\GlobalModelAttributes.java
+C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\controller\LoginController.java
+C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\controller\PageController.java
+C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\controller\UserAdminController.java
+C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\controller\UserSettingController.java
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\DashboardApplication.java
-C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\DashboardController.java
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\DashboardUsers.java
-C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\ErrorController.java
-C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\LoginController.java
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\Page.java
-C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\PageController.java
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\Project.java
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\repository\PageRepository.java
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\repository\ProjectRepository.java
@@ -16,6 +19,5 @@ C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\service\ImageDownloadService.java
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\service\MailService.java
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\service\PageService.java
-C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\service\UserAdminService.java
+C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\service\UserService.java
 C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\UserRole.java
-C:\Users\taran\OneDrive\Desktop\Github\Dashboard_CMS\src\main\java\com\dashboard\UserSettingController.java

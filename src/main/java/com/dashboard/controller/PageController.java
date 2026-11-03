@@ -1,6 +1,7 @@
 
-package com.dashboard;
+package com.dashboard.controller;
 
+import com.dashboard.Page;
 import com.dashboard.service.PageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

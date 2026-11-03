@@ -37,7 +37,7 @@ public class SecurityConfig
 
                         // Dashboard - Users (Admin only)
                         .requestMatchers(
-                                "/dashboard/users/**"
+                                "/admin/users/**"
                         ).hasAnyRole("SUPER_ADMIN", "ADMINISTRATOR")
 
                         .requestMatchers("/projects/**")

@@ -1,8 +1,8 @@
-package com.dashboard;
+package com.dashboard.controller;
 
-import java.sql.*;
 import java.time.LocalTime;
 
+import com.dashboard.DashboardUsers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 
@@ -75,13 +75,13 @@ public class DashboardController
         model.addAttribute("greeting", greeting);
 
         //  Get Session Username
-        model.addAttribute("first_name", user.getFirstName());
+//        model.addAttribute("first_name", user.getFirstName());
 
         //  Get Profile Picture
 
-        model.addAttribute("profile_picture", user.getProfilePicture());
-        model.addAttribute("oauth_provider", user.getOauthProvider());
-        model.addAttribute("oauth_picture", user.getOauthPicture());
+//        model.addAttribute("profile_picture", user.getProfilePicture());
+//        model.addAttribute("oauth_provider", user.getOauthProvider());
+//        model.addAttribute("oauth_picture", user.getOauthPicture());
 
         return "Dashboard/dashboard";
     }
@@ -94,13 +94,6 @@ public class DashboardController
         DashboardUsers user = userRepository
                 .findByUsername(authentication.getName())
                 .orElseThrow(() -> new RuntimeException("User not found"));
-
-
-        //  Get Session Username
-        model.addAttribute(
-                "first_name",
-                user.getFirstName()
-        );
 
         //  Breadcrumbs
 
