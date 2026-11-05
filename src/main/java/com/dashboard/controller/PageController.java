@@ -21,6 +21,7 @@ public class PageController {
     @GetMapping
     public String listPages(Model model) {
         model.addAttribute("pages", pageService.getAllPages());
+        model.addAttribute("pageTitle", "All Pages");
         return "Dashboard/Pages/pages-index";
     }
 
@@ -28,6 +29,7 @@ public class PageController {
     @GetMapping("/add")
     public String addPage(Model model) {
         model.addAttribute("page", new Page());
+        model.addAttribute("pageTitle", "Add Page");
         return "Dashboard/Pages/add_new_page";
     }
 
@@ -45,6 +47,7 @@ public class PageController {
             Model model) {
 
         model.addAttribute("page", pageService.getPageById(id));
+        model.addAttribute("pageTitle", "Edit Page");
         return "Dashboard/Pages/edit_page";
     }
 

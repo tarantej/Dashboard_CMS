@@ -1,0 +1,28 @@
+"table_name","column_name","data_type","character_maximum_length","is_nullable","column_default"
+"project_status","status_id","integer",NULL,"NO","nextval('project_status_status_id_seq'::regclass)"
+"project_status","status_name","character varying",50,"NO",NULL
+"project_status","status_color","character varying",30,"YES",NULL
+"project_technology","project_id","integer",NULL,"NO",NULL
+"project_technology","technology_id","integer",NULL,"NO",NULL
+"project_type","type_id","integer",NULL,"NO","nextval('project_type_type_id_seq'::regclass)"
+"project_type","type_name","character varying",50,"NO",NULL
+"projects","project_id","integer",NULL,"NO","nextval('projects_project_id_seq'::regclass)"
+"projects","project_title","character varying",255,"NO",NULL
+"projects","project_slug","character varying",255,"NO",NULL
+"projects","short_desc","character varying",255,"YES",NULL
+"projects","project_desc","text",NULL,"YES",NULL
+"projects","github_url","character varying",255,"YES",NULL
+"projects","demo_url","character varying",255,"YES",NULL
+"projects","project_feature_image","character varying",255,"YES",NULL
+"projects","project_status","character varying",255,"YES",NULL
+"projects","project_type","character varying",255,"YES",NULL
+"projects","featured_project","boolean",NULL,"YES","false"
+"projects","display_order","integer",NULL,"YES","0"
+"projects","created_at","timestamp without time zone",NULL,"YES","CURRENT_TIMESTAMP"
+"projects","updated_at","timestamp without time zone",NULL,"YES","CURRENT_TIMESTAMP"
+"technology","technology_id","integer",NULL,"NO","nextval('technology_technology_id_seq'::regclass)"
+"technology","technology_name","character varying",100,"NO",NULL
+"technology","technology_slug","character varying",100,"YES",NULL
+"technology","technology_logo","character varying",255,"YES",NULL
+"technology","technology_version","character varying",50,"YES",NULL
+"technology","technology_category","character varying",50,"YES",NULL

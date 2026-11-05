@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{Dashboard/fragments/header :: header('Edit Project')}"></head>
+
+<body id="page-top">
+<div id="wrapper">
+
+    <div th:replace="~{Dashboard/fragments/sidebar :: sidebar}"></div>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+
+            <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
+
+            <div class="container-fluid">
+
+                <div th:replace="~{Dashboard/fragments/breadcrumb :: breadcrumb}"></div>
+
+                <div class="mb-4">
+                    <h1 class="h3 font-weight-bold text-dark">Edit Project</h1>
+                    <p class="text-muted">Update project details and portfolio settings.</p>
+                </div>
+
+                <form th:action="@{/dashboard/projects/save}"
+                      th:object="${project}"
+                      method="post">
+
+                    <input type="hidden" th:field="*{projectId}">
+
+                    <div class="row">
+
+                        <!-- Main Editor -->
+                        <div class="col-lg-8">
+
+                            <div class="card shadow-sm mb-4">
+                                <div class="card-body">
+
+                                    <div class="form-group">
+                                        <label for="projectTitle">
+                                            Project Title <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text"
+                                               id="projectTitle"
+                                               th:field="*{projectTitle}"
+                                               class="form-control"
+                                               required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="projectSlug">Project Slug</label>
+                                        <input type="text"
+                                               id="projectSlug"
+                                               th:field="*{projectSlug}"
+                                               class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="shortDescription">Short Description</label>
+                                        <textarea id="shortDescription"
+                                                  th:field="*{shortDescription}"
+                                                  class="form-control"
+                                                  rows="3">
+                                        </textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="projectDescription">Project Description</label>
+                                        <textarea id="projectDescription"
+                                                  th:field="*{projectDescription}"
+                                                  class="form-control"
+                                                  rows="12">
+                                        </textarea>
+                                    </div>
+
+                                    <hr>
+
+                                    <h5 class="font-weight-bold mb-3">Project Links</h5>
+
+                                    <div class="form-group">
+                                        <label for="githubUrl">GitHub URL</label>
+                                        <input type="url"
+                                               id="githubUrl"
+                                               th:field="*{githubUrl}"
+                                               class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="demoUrl">Live Demo URL</label>
+                                        <input type="url"
+                                               id="demoUrl"
+                                               th:field="*{demoUrl}"
+                                               class="form-control">
+                                    </div>
+
+                                    <hr>
+
+                                    <h5 class="font-weight-bold mb-3">Featured Image</h5>
+
+                                    <div class="form-group mb-0">
+                                        <label for="projectFeatureImage">Image Path</label>
+                                        <input type="text"
+                                               id="projectFeatureImage"
+                                               th:field="*{projectFeatureImage}"
+                                               class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Project Settings -->
+                        <div class="col-lg-4">
+
+                            <div class="card shadow-sm mb-4">
+                                <div class="card-header">Publish</div>
+                                <div class="card-body">
+
+                                    <div class="form-group">
+                                        <label for="statusId">Project Status</label>
+                                        <select id="statusId"
+                                                name="statusId"
+                                                class="form-control"
+                                                required>
+                                            <option value="">Select Status</option>
+                                            <option th:each="status : ${statuses}"
+                                                    th:value="${status.statusId}"
+                                                    th:text="${status.statusName}"
+                                                    th:selected="${project.projectStatus != null
+                                                        and project.projectStatus.statusId == status.statusId}">
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="typeId">Project Type</label>
+                                        <select id="typeId"
+                                                name="typeId"
+                                                class="form-control"
+                                                required>
+                                            <option value="">Select Type</option>
+                                            <option th:each="type : ${types}"
+                                                    th:value="${type.typeId}"
+                                                    th:text="${type.typeName}"
+                                                    th:selected="${project.projectType != null
+                                                        and project.projectType.typeId == type.typeId}">
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   id="featuredProject"
+                                                   th:field="*{featuredProject}"
+                                                   class="custom-control-input">
+                                            <label class="custom-control-label"
+                                                   for="featuredProject">
+                                                Featured Project
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="displayOrder">Display Order</label>
+                                        <input type="number"
+                                               id="displayOrder"
+                                               th:field="*{displayOrder}"
+                                               class="form-control"
+                                               min="0">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        <i class="bi bi-save mr-2"></i> Update Project
+                                    </button>
+
+                                    <a th:href="@{/dashboard/projects}"
+                                       class="btn btn-outline-secondary btn-block">
+                                        Cancel
+                                    </a>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
+    </div>
+</div>
+
+<div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
+<div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
+<div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+
+</body>
+</html>

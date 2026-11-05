@@ -2,7 +2,10 @@ com\dashboard\service\UserService.class
 com\dashboard\service\ImageDownloadService.class
 com\dashboard\controller\GlobalModelAttributes.class
 com\dashboard\DashboardApplication.class
+com\dashboard\ProjectStatus.class
 com\dashboard\repository\ProjectRepository.class
+com\dashboard\repository\ProjectTypeRepo.class
+com\dashboard\repository\ProjectStatusRepo.class
 com\dashboard\controller\DashboardController.class
 com\dashboard\service\CustomUserDetailsService.class
 com\dashboard\controller\PageController.class
@@ -16,8 +19,11 @@ com\dashboard\UserRole.class
 com\dashboard\controller\UserSettingController.class
 com\dashboard\repository\UserRepository.class
 com\dashboard\Project.class
+com\dashboard\ProjectType.class
 com\dashboard\controller\ErrorController.class
+com\dashboard\controller\ProjectController.class
 com\dashboard\service\PageService.class
+com\dashboard\service\ProjectService.class
 com\dashboard\repository\PageRepository.class
 com\dashboard\config\SecurityConfig.class
 com\dashboard\Page.class

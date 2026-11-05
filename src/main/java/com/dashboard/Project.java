@@ -1,15 +1,13 @@
 package com.dashboard;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "projects")
+
+
 public class Project {
 
     @Id
@@ -38,11 +36,13 @@ public class Project {
     @Column(name = "project_feature_image")
     private String projectFeatureImage;
 
-    @Column(name = "project_status")
-    private String projectStatus;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "status_id", nullable = false)
+    private ProjectStatus projectStatus;
 
-    @Column(name = "project_type")
-    private String projectType;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id", nullable = false)
+    private ProjectType projectType;
 
     @Column(name = "featured_project")
     private Boolean featuredProject;
@@ -116,20 +116,12 @@ public class Project {
         this.projectFeatureImage = projectFeatureImage;
     }
 
-    public String getProjectStatus() {
+    public ProjectStatus getProjectStatus() {
         return projectStatus;
     }
 
-    public void setProjectStatus(String projectStatus) {
-        this.projectStatus = projectStatus;
-    }
-
-    public String getProjectType() {
+    public ProjectType getProjectType() {
         return projectType;
-    }
-
-    public void setProjectType(String projectType) {
-        this.projectType = projectType;
     }
 
     public Boolean getFeaturedProject() {
@@ -163,4 +155,32 @@ public class Project {
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
+    public void setProjectStatus(ProjectStatus projectStatus) {
+        this.projectStatus = projectStatus;
+    }
+
+    public void setProjectType(ProjectType projectType) {
+        this.projectType = projectType;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        createdAt = now;
+        updatedAt = now;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = new Timestamp(System.currentTimeMillis());
+    }
+
+
+
+
 }
