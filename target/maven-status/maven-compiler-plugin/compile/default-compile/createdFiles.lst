@@ -6,6 +6,7 @@ com\dashboard\ProjectStatus.class
 com\dashboard\repository\ProjectRepository.class
 com\dashboard\repository\ProjectTypeRepo.class
 com\dashboard\repository\ProjectStatusRepo.class
+com\dashboard\controller\PortfolioController.class
 com\dashboard\controller\DashboardController.class
 com\dashboard\service\CustomUserDetailsService.class
 com\dashboard\controller\PageController.class

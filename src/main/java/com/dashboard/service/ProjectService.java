@@ -72,4 +72,12 @@ public class ProjectService
     public Optional<ProjectType> findProjectTypeById(Integer id) {
         return projectTypeRepo.findById(id);
     }
+
+    public List<Project> findLatestThreeProjects() {
+        return projectRepository.findTop3ByOrderByUpdatedAtDesc();
+    }
+
+    public Optional<Project> findProjectBySlug(String slug) {
+        return projectRepository.findByProjectSlug(slug);
+    }
 }

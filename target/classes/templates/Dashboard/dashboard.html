@@ -198,7 +198,7 @@
                                             Recent Projects
                                         </h6>
 
-                                        <a href="#" class="text-decoration-none">
+                                        <a th:href="@{/portfolio}" class="text-decoration-none">
                                             View all projects
                                             <i class="bi bi-arrow-right ms-1"></i>
                                         </a>
@@ -207,218 +207,63 @@
 
                                     <div class="card-body">
 
-                                        <!-- ===================== Project 1 ===================== -->
-                                        <div class="row align-items-center py-3 border-bottom">
+                                        <!-- Recent Projects -->
+                                        <div th:each="project, iterStat : ${recentProjects}"
+                                             class="row align-items-center py-3"
+                                             th:classappend="${!iterStat.last} ? 'border-bottom'">
 
                                             <!-- Thumbnail -->
                                             <div class="col-lg-2 col-md-3">
-                                                <img th:src="@{'/img/projects/dashboard-cms.png'}"
+                                                <img th:if="${project.projectFeatureImage != null
+                    and !project.projectFeatureImage.isBlank()}"
+                                                     th:src="@{${project.projectFeatureImage}}"
                                                      class="img-fluid rounded"
-                                                     alt="Dashboard CMS">
+                                                     th:alt="${project.projectTitle}">
                                             </div>
 
                                             <!-- Project Info -->
                                             <div class="col-lg-4 col-md-9">
 
                                                 <h6 class="fw-bold mb-1">
-                                                    Dashboard CMS
+                                                    <a th:href="@{/portfolio/{slug}(slug=${project.projectSlug})}"
+                                                       th:text="${project.projectTitle}"
+                                                       class="text-decoration-none text-dark">
+                                                    </a>
                                                 </h6>
 
-                                                <p class="text-muted small mb-2">
-                                                    Spring Boot CMS Platform
+                                                <p class="text-muted small mb-2"
+                                                   th:text="${project.shortDescription}">
                                                 </p>
 
-                                                <span class="badge bg-light text-dark">
-                Spring Boot
-            </span>
-
-                                                <span class="badge bg-light text-dark">
-                Thymeleaf
-            </span>
-
-                                                <span class="badge bg-light text-dark">
-                PostgreSQL
-            </span>
+                                                <a th:href="@{/portfolio/{slug}(slug=${project.projectSlug})}"
+                                                   class="btn btn-outline-primary btn-sm">
+                                                    View Project
+                                                </a>
 
                                             </div>
 
-                                            <!-- Progress -->
+                                            <!-- Project Status -->
                                             <div class="col-lg-3">
 
-            <span class="badge bg-success-subtle text-success mb-2">
-                In Progress
-            </span>
-
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success"
-                                                         style="width:80%">
-                                                    </div>
-                                                </div>
+        <span class="badge bg-secondary mb-2"
+              th:text="${project.projectStatus.statusName}">
+        </span>
 
                                             </div>
 
                                             <!-- Updated -->
                                             <div class="col-lg-2 text-center">
 
-                                                <small class="text-muted d-block">
-                                                    Updated
+                                                <small class="text-muted d-block">Updated</small>
+
+                                                <small th:text="${#dates.format(project.updatedAt, 'dd MMM yyyy')}">
                                                 </small>
-
-                                                <small>
-                                                    2h ago
-                                                </small>
-
-                                            </div>
-
-                                            <!-- Menu -->
-                                            <div class="col-lg-1 text-end">
-
-                                                <button class="btn btn-link text-secondary p-0">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </button>
 
                                             </div>
 
                                         </div>
 
-                                        <!-- ===================== Project 2 ===================== -->
-                                        <div class="row align-items-center py-3 border-bottom">
-
-                                            <div class="col-lg-2 col-md-3">
-                                                <img th:src="@{'/img/projects/Kuraconnect-Logo.png'}"
-                                                     class="img-fluid rounded"
-                                                     alt="KuraConnect">
-                                            </div>
-
-                                            <div class="col-lg-4 col-md-9">
-
-                                                <h6 class="fw-bold mb-1">
-                                                    KuraConnect
-                                                </h6>
-
-                                                <p class="text-muted small mb-2">
-                                                    Papakura Community Platform
-                                                </p>
-
-                                                <span class="badge bg-light text-dark">
-                Laravel API
-            </span>
-
-                                                <span class="badge bg-light text-dark">
-                Angular
-            </span>
-
-                                                <span class="badge bg-light text-dark">
-                MySQL
-            </span>
-
-                                            </div>
-
-                                            <div class="col-lg-3">
-
-            <span class="badge bg-primary-subtle text-primary mb-2">
-                Completed
-            </span>
-
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-primary"
-                                                         style="width:100%">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col-lg-2 text-center">
-
-                                                <small class="text-muted d-block">
-                                                    Updated
-                                                </small>
-
-                                                <small>
-                                                    Aug 2022
-                                                </small>
-
-                                            </div>
-
-                                            <div class="col-lg-1 text-end">
-
-                                                <button class="btn btn-link text-secondary p-0">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </button>
-
-                                            </div>
-
-                                        </div>
-
-                                        <!-- ===================== Project 3 ===================== -->
-                                        <div class="row align-items-center py-3">
-
-                                            <div class="col-lg-2 col-md-3">
-                                                <img th:src="@{'/img/projects/khl-login.png'}"
-                                                     class="img-fluid rounded"
-                                                     alt="Karen Harding Lawyer">
-                                            </div>
-
-                                            <div class="col-lg-4 col-md-9">
-
-                                                <h6 class="fw-bold mb-1">
-                                                    Karen Harding Lawyer, Barristers &amp; Solicitors
-                                                </h6>
-
-                                                <p class="text-muted small mb-2">
-
-                                                </p>
-
-                                                <span class="badge bg-light text-dark">
-                WordPress
-            </span>
-
-                                                <span class="badge bg-light text-dark">
-                PHP
-            </span>
-
-                                                <span class="badge bg-light text-dark">
-                MySQL
-            </span>
-
-                                            </div>
-
-                                            <div class="col-lg-3">
-
-            <span class="badge bg-warning-subtle text-warning mb-2">
-                Maintenance
-            </span>
-
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-warning"
-                                                         style="width:100%">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col-lg-2 text-center">
-
-                                                <small class="text-muted d-block">
-                                                    Updated
-                                                </small>
-
-                                                <small>
-                                                    Mar 2023
-                                                </small>
-
-                                            </div>
-
-                                            <div class="col-lg-1 text-end">
-
-                                                <button class="btn btn-link text-secondary p-0">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </button>
-
-                                            </div>
-
-                                        </div>
-
+                                    <!--    End Card Body     -->
                                     </div>
 
                                 </div>

@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import com.dashboard.DashboardUsers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-
+import com.dashboard.service.ProjectService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +28,9 @@ public class DashboardController
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ProjectService projectService;
 
     @GetMapping("/dashboard")
     public String Dashboard(Model model,
@@ -73,6 +76,9 @@ public class DashboardController
         }
 
         model.addAttribute("greeting", greeting);
+
+        model.addAttribute("recentProjects",
+                projectService.findLatestThreeProjects());
 
         //  Get Session Username
 //        model.addAttribute("first_name", user.getFirstName());
