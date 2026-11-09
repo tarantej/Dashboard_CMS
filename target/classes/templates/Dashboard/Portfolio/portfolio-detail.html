@@ -1,58 +1,413 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head th:replace="~{Dashboard/fragments/header :: header('Portfolio Details')}"></head>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{Dashboard/fragments/header :: header('Portfolio Details')}">
+
+</head>
 
 <body id="page-top">
 
-<!-- Page Wrapper -->
 <div id="wrapper">
-    <!-- Sidebar -->
+
     <div th:replace="~{Dashboard/fragments/sidebar :: sidebar}"></div>
 
-    <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
-        <!-- Main Content -->
         <div id="content">
-            <!-- Topbar -->
+
             <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
 
-            <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <!-- Breadcrumb -->
                 <div th:replace="~{Dashboard/fragments/breadcrumb :: breadcrumb}"></div>
 
-                <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Project Details</h1>
+                <!-- Project Heading -->
+                <div class="d-flex justify-content-between align-items-center mb-4" style="padding:1%;">
+                    <div class="flex-grow-1">
+                        <h1 class="h3 font-weight-bold text-dark"
+                            th:text="${project.projectTitle}">Sherni</h1>
+
+                        <p class="text-muted mb-0 project-short-description"
+                           th:text="${project.shortDescription}">
+                            Project description
+                        </p>
+                    </div>
+
+                    <a th:href="@{/portfolio}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        View All Projects
+                    </a>
+                </div>
+
+                <!-- Hero and Project Information -->
+                <div class="row mb-4">
+
+                    <div class="col-lg-8 mb-3 mb-lg-0">
+                        <div class="card shadow-sm border-0 h-100">
+                            <img th:src="@{${project.projectFeatureImage}}"
+                                 class="card-img-top"
+                                 alt="Project feature image"
+                                 style="object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <div class="card shadow-sm border-0 h-100 project-info-card">
+
+                            <div class="card-body">
+
+                                <!-- Project Type and Status -->
+                                <div class="project-badges">
+
+                <span class="badge bg-warning text-dark"
+                      th:text="${project.projectType.typeName}">
+                    Personal
+                </span>
+
+                                    <span class="badge bg-success"
+                                          th:text="${project.projectStatus.statusName}">
+                    Archived
+                </span>
+
+                                </div>
+
+                                <!-- Last Updated -->
+                                <div class="project-info-row">
+
+                                    <i class="bi bi-calendar3 info-icon"></i>
+
+                                    <span class="info-label">
+                    Last Updated
+                </span>
+
+                                    <span class="info-value"
+                                          th:text="${#dates.format(project.updatedAt, 'dd MMM yyyy')}">
+                    06 Nov 2026
+                </span>
+
+                                </div>
+
+                                <!-- Technologies -->
+                                <div class="project-info-row">
+
+                                    <i class="bi bi-stack info-icon"></i>
+
+                                    <span class="info-label">
+                    Technologies
+                </span>
+
+                                    <div class="technology-tags">
+
+                    <span class="badge bg-light text-dark border">
+                        WordPress
+                    </span>
+
+                                        <span class="badge bg-light text-dark border">
+                        WooCommerce
+                    </span>
+
+                                        <span class="badge bg-light text-dark border">
+                        PHP
+                    </span>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Project URL -->
+                                <div class="project-info-row">
+
+                                    <i class="bi bi-box-arrow-up-right info-icon"></i>
+
+                                    <span class="info-label">
+                    Project URL
+                </span>
+
+                                    <span class="info-value">
+                    <a href="https://sherni.in" target="_blank">
+                        https://sherni.in
+                    </a>
+                </span>
+
+                                </div>
+
+                                <!-- Repository -->
+                                <div class="project-info-row">
+
+                                    <i class="bi bi-code-slash info-icon"></i>
+
+                                    <span class="info-label">
+                    Repository
+                </span>
+
+                                    <span class="info-value">
+                    <a href="#" target="_blank">
+                        View on GitHub
+                    </a>
+                </span>
+
+                                </div>
+
+                                <!-- Visit Live Project -->
+                                <a href="https://sherni.in"
+                                   target="_blank"
+                                   class="btn btn-outline-primary project-action">
+
+                                    <i class="bi bi-box-arrow-up-right me-2"></i>
+                                    Visit Live Project
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Project Detail Tabs -->
+                <div class="card shadow-sm border-0 mb-4">
+
+                    <div class="card-header bg-white p-0">
+                        <ul class="nav nav-tabs" role="tablist">
+
+                            <li class="nav-item">
+                                <button class="nav-link active"
+                                        id="overview-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#overview"
+                                        type="button"
+                                        role="tab">
+                                    Overview
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link"
+                                        id="features-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#features"
+                                        type="button"
+                                        role="tab">
+                                    Features
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link"
+                                        id="techstack-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#techstack"
+                                        type="button"
+                                        role="tab">
+                                    Tech Stack
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link"
+                                        id="gallery-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#gallery"
+                                        type="button"
+                                        role="tab">
+                                    Gallery
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link"
+                                        id="details-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#details"
+                                        type="button"
+                                        role="tab">
+                                    Details
+                                </button>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="tab-content">
+
+                            <!-- Overview -->
+                            <div class="tab-pane fade show active" id="overview">
+
+                                <div class="row">
+
+                                    <div class="col-lg-8">
+                                        <h4 class="font-weight-bold mb-3">
+                                            Project Overview
+                                        </h4>
+
+                                        <p>
+                                            Sherni was an independent e-commerce concept
+                                            created to explore the development of an online
+                                            women's fashion store.
+                                        </p>
+
+                                        <p>
+                                            Built around WordPress and WooCommerce, the
+                                            project focused on establishing a distinct brand
+                                            identity and designing a fashion-oriented
+                                            storefront.
+                                        </p>
+
+                                        <p>
+                                            The initial concept included a promotional
+                                            homepage, product category sections, featured
+                                            collections, customer navigation and social
+                                            media integration. The project remained at the
+                                            initial concept and design stage.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Features -->
+                            <div class="tab-pane fade" id="features">
+                                <h4 class="font-weight-bold mb-3">Project Features</h4>
+
+                                <p>
+                                    This section describes the main features and
+                                    functionality explored during the project.
+                                </p>
+
+                                <ul>
+                                    <li>Homepage and promotional banner design</li>
+                                    <li>Product category layouts</li>
+                                    <li>Featured product collections</li>
+                                    <li>Individual product presentation</li>
+                                    <li>Shopping cart interface concept</li>
+                                    <li>Customer login and registration layouts</li>
+                                </ul>
+                            </div>
+
+                            <!-- Tech Stack -->
+                            <div class="tab-pane fade" id="techstack">
+                                <h4 class="font-weight-bold mb-3">Technology Stack</h4>
+
+                                <p>
+                                    The project explored the following technologies
+                                    and tools:
+                                </p>
+
+                                <span class="badge badge-light border p-2">WordPress</span>
+                                <span class="badge badge-light border p-2">WooCommerce</span>
+                                <span class="badge badge-light border p-2">PHP</span>
+                                <span class="badge badge-light border p-2">HTML5</span>
+                                <span class="badge badge-light border p-2">CSS3</span>
+                                <span class="badge badge-light border p-2">JavaScript</span>
+                            </div>
+
+                            <!-- Gallery -->
+                            <div class="tab-pane fade" id="gallery">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h4 class="font-weight-bold mb-0">Project Gallery</h4>
+                                    <span class="badge badge-light p-2">6 Screenshots</span>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                                        <div class="card shadow-sm h-100">
+                                            <a href="/img/portfolio/sherni/gallery/sherni-homepage-categories.png"
+                                               target="_blank">
+                                                <img src="/img/portfolio/sherni/gallery/sherni-homepage-categories.png"
+                                                     class="card-img-top"
+                                                     alt="Sherni Homepage Categories">
+                                            </a>
+                                            <div class="card-body text-center">
+                                                <strong>Homepage Categories</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                                        <div class="card shadow-sm h-100">
+                                            <a href="/img/portfolio/sherni/gallery/sherni-category-shop.png"
+                                               target="_blank">
+                                                <img src="/img/portfolio/sherni/gallery/sherni-category-shop.png"
+                                                     class="card-img-top"
+                                                     alt="Sherni Category Shop">
+                                            </a>
+                                            <div class="card-body text-center">
+                                                <strong>Category Shop</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                                        <div class="card shadow-sm h-100">
+                                            <a href="/img/portfolio/sherni/gallery/sherni-homepage-collection.png"
+                                               target="_blank">
+                                                <img src="/img/portfolio/sherni/gallery/sherni-homepage-collection.png"
+                                                     class="card-img-top"
+                                                     alt="Sherni Homepage Collection">
+                                            </a>
+                                            <div class="card-body text-center">
+                                                <strong>Homepage Collection</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                                        <div class="card shadow-sm h-100">
+                                            <a href="/img/portfolio/sherni/gallery/sherni-product-detail.png"
+                                               target="_blank">
+                                                <img src="/img/portfolio/sherni/gallery/sherni-product-detail.png"
+                                                     class="card-img-top"
+                                                     alt="Sherni Product Detail">
+                                            </a>
+                                            <div class="card-body text-center">
+                                                <strong>Product Detail Page</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Details -->
+                            <div class="tab-pane fade" id="details">
+                                <h4 class="font-weight-bold mb-3">Project Details</h4>
+
+                                <p>
+                                    Sherni was developed as an independent fashion
+                                    e-commerce concept. This section provides additional
+                                    background about the project, its objectives and
+                                    development approach.
+                                </p>
+
+                                <p>
+                                    Further project information will be added as the
+                                    documentation is completed.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
-            <!-- /.container-fluid -->
 
         </div>
-        <!-- End of Main Content -->
 
-        <!-- Copyright -->
         <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
-        <!-- End of Copyright -->
 
     </div>
-    <!-- End of Content Wrapper -->
 
 </div>
-<!-- End of Page Wrapper -->
 
-<!-- Scroll to Top Button-->
 <div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
-
-<!-- Logout Modal-->
 <div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
-
-<!-- Footer -->
 <div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
-<!-- End of Footer -->
 
 </body>
-
 </html>

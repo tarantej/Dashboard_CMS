@@ -15,11 +15,18 @@ public class ProjectType
     @Column(name = "type_name", nullable = false)
     private String typeName;
 
+    @Column(name = "type_color")
+    private String typeColor;
+
     public Integer getTypeId() {
         return typeId;
     }
 
     public String getTypeName() {
         return typeName;
+    }
+
+    public String getTypeColor() {
+        return typeColor;
     }
 }

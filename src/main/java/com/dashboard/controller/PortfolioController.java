@@ -34,7 +34,7 @@ public class PortfolioController
                     model.addAttribute("project", project);
 
                     // Breadcrumbs
-                    model.addAttribute("pageTitle", "Project Details");
+                    model.addAttribute("pageTitle", project.getProjectTitle());
 
                     return "Dashboard/Portfolio/portfolio-detail";
                 })
