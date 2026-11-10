@@ -5,24 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d1470cc-d5df-42e9-b917-d831b8300cbc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/Technology.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/TechnologyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/TechnologyRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/service/TechnologyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Technology/add-technology.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Technology/edit-technology.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Technology/technology-index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/ProjectType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/ProjectType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/PortfolioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/PortfolioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/dashboard-cms.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/dashboard-cms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/projects/Kuraconnect-Logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/projects/dashboard-cms.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/projects/khl-login.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Portfolio/portfolio-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Portfolio/portfolio-detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Portfolio/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Portfolio/portfolio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/fragments/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/fragments/sidebar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/css/dashboard-cms.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/dashboard-cms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/projects/Kuraconnect-Logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/projects/dashboard-cms.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/projects/khl-login.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Portfolio/portfolio-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Portfolio/portfolio-detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Portfolio/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Portfolio/portfolio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/fragments/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/fragments/sidebar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

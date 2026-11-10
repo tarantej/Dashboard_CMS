@@ -26,7 +26,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-4" style="padding:1%;">
                     <div class="flex-grow-1">
                         <h1 class="h3 font-weight-bold text-dark"
-                            th:text="${project.projectTitle}">Sherni</h1>
+                            th:text="${project.projectTitle}">Project Title</h1>
 
                         <p class="text-muted mb-0 project-short-description"
                            th:text="${project.shortDescription}">
@@ -125,11 +125,15 @@
                     Project URL
                 </span>
 
-                                    <span class="info-value">
-                    <a href="https://sherni.in" target="_blank">
-                        https://sherni.in
-                    </a>
-                </span>
+                                    <span th:if="${project.demoUrl != null and !#strings.isEmpty(project.demoUrl)}">
+    <a th:href="${project.demoUrl}"
+       th:text="${project.demoUrl}"
+       target="_blank"></a>
+</span>
+
+                                    <span th:unless="${project.demoUrl != null and !#strings.isEmpty(project.demoUrl)}">
+    Not Available
+</span>
 
                                 </div>
 
@@ -142,16 +146,20 @@
                     Repository
                 </span>
 
-                                    <span class="info-value">
-                    <a href="#" target="_blank">
-                        View on GitHub
-                    </a>
-                </span>
+                                    <span th:if="${project.githubUrl != null and !#strings.isEmpty(project.githubUrl)}">
+    <a th:href="${project.githubUrl}"
+       th:text="${project.githubUrl}"
+       target="_blank"></a>
+</span>
+
+                                    <span th:unless="${project.githubUrl != null and !#strings.isEmpty(project.githubUrl)}">
+    Not Available
+</span>
 
                                 </div>
 
                                 <!-- Visit Live Project -->
-                                <a href="https://sherni.in"
+                                <a href="#"
                                    target="_blank"
                                    class="btn btn-outline-primary project-action">
 

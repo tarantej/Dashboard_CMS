@@ -929,6 +929,7 @@ pre code {
     object-fit: cover;
     object-position: center;
     display: block;
+    border-radius: 12px;
 }
 
 .project-back-button {
