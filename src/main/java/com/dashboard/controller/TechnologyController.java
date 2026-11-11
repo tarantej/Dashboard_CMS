@@ -2,7 +2,6 @@ package com.dashboard.controller;
 
 import com.dashboard.Technology;
 import com.dashboard.service.TechnologyService;
-import org.springframework.data.domain.Page;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,11 +42,22 @@ public class TechnologyController
     // Save new or edited technology
     @PostMapping("/dashboard/technologies/save")
     public String saveTechnology(
-            @ModelAttribute("technology") Technology technology) {
+            @ModelAttribute("technology") Technology technology,
+            Model model) {
 
-        technologyService.saveTechnology(technology);
+        try {
 
-        return "redirect:/dashboard/technologies";
+            technologyService.saveTechnology(technology);
+
+            return "redirect:/dashboard/technologies";
+
+        } catch (IllegalArgumentException e) {
+
+            model.addAttribute("pageTitle", "Add Technology");
+            model.addAttribute("errorMessage", e.getMessage());
+
+            return "Dashboard/Technology/add-technology";
+        }
     }
 
     // Display Edit Technology form
@@ -67,5 +77,26 @@ public class TechnologyController
         model.addAttribute("pageTitle", "Edit Technology");
 
         return "Dashboard/Technology/edit-technology";
+    }
+
+    // Update existing technology
+    @PostMapping("/dashboard/technologies/update")
+    public String updateTechnology(
+            @ModelAttribute("technology") Technology technology,
+            Model model) {
+
+        try {
+
+            technologyService.saveTechnology(technology);
+
+            return "redirect:/dashboard/technologies";
+
+        } catch (IllegalArgumentException e) {
+
+            model.addAttribute("pageTitle", "Edit Technology");
+            model.addAttribute("errorMessage", e.getMessage());
+
+            return "Dashboard/Technology/edit-technology";
+        }
     }
 }

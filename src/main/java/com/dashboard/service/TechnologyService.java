@@ -5,10 +5,10 @@ import com.dashboard.Technology;
 import com.dashboard.repository.TechnologyRepo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import java.util.List;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,6 +23,13 @@ public class TechnologyService
     // Retrieve all technologies with pagination
     public Page<Technology> findAllTechnologies(Pageable pageable) {
         return technologyRepo.findAll(pageable);
+    }
+
+    // Retrieve all technologies alphabetically for DataTables
+    public List<Technology> findAllTechnologies() {
+        return technologyRepo.findAll(
+                Sort.by(Sort.Direction.ASC, "technologyName")
+        );
     }
 
     // Search technologies by name, slug or category
@@ -48,14 +55,75 @@ public class TechnologyService
         return technologyRepo.findById(technologyId);
     }
 
-    // Add or update technology
+
     public Technology saveTechnology(Technology technology) {
+
+        // Validate technology name
+        if (technology.getTechnologyName() == null ||
+                technology.getTechnologyName().isBlank()) {
+            throw new IllegalArgumentException("Technology name is required.");
+        }
+
+        String technologyName = technology.getTechnologyName().trim();
+        technology.setTechnologyName(technologyName);
+
+        // Generate slug if empty
+        if (technology.getTechnologySlug() == null ||
+                technology.getTechnologySlug().isBlank()) {
+            technology.setTechnologySlug(generateSlug(technologyName));
+        } else {
+            technology.setTechnologySlug(
+                    generateSlug(technology.getTechnologySlug())
+            );
+        }
+
+        // Check duplicate name and slug
+        Integer technologyId = technology.getTechnologyId();
+
+        if (technologyId == null) {
+
+            // New technology
+            if (technologyRepo.existsByTechnologyNameIgnoreCase(technologyName)) {
+                throw new IllegalArgumentException(
+                        "A technology with this name already exists."
+                );
+            }
+
+            if (technologyRepo.existsByTechnologySlugIgnoreCase(
+                    technology.getTechnologySlug())) {
+                throw new IllegalArgumentException(
+                        "A technology with this slug already exists."
+                );
+            }
+
+        } else {
+
+            // Existing technology: exclude its own ID
+            if (technologyRepo.existsByTechnologyNameIgnoreCaseAndTechnologyIdNot(
+                    technologyName, technologyId)) {
+                throw new IllegalArgumentException(
+                        "A technology with this name already exists."
+                );
+            }
+
+            if (technologyRepo.existsByTechnologySlugIgnoreCaseAndTechnologyIdNot(
+                    technology.getTechnologySlug(), technologyId)) {
+                throw new IllegalArgumentException(
+                        "A technology with this slug already exists."
+                );
+            }
+        }
+
         return technologyRepo.save(technology);
     }
 
-    public List<Technology> findAllTechnologies() {
-        return technologyRepo.findAll(
-                Sort.by(Sort.Direction.ASC, "technologyName")
-        );
+
+    // Generate URL-friendly slug
+    private String generateSlug(String value) {
+
+        return value.toLowerCase()
+                .trim()
+                .replaceAll("[^a-z0-9]+", "-")
+                .replaceAll("^-|-$", "");
     }
 }

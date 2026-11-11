@@ -1,10 +1,252 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{Dashboard/fragments/header :: header('Edit Technology')}">
 </head>
-<body>
+
+<body id="page-top">
+
+<div id="wrapper">
+
+    <div th:replace="~{Dashboard/fragments/sidebar :: sidebar}"></div>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+            <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
+
+            <div class="container-fluid">
+
+                <div th:replace="~{Dashboard/fragments/breadcrumb :: breadcrumb}"></div>
+
+                <!-- Page Heading -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <div>
+                        <h1 class="h3 mb-1 fw-bold text-dark">Edit Technology</h1>
+                        <p class="text-muted mb-0">
+                            Update technology information.
+                        </p>
+                    </div>
+
+                    <a th:href="@{/dashboard/technologies}"
+                       class="btn btn-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>
+                        Back to Technologies
+                    </a>
+
+                </div>
+
+                <!-- Technology Form -->
+                <div class="card shadow-sm mb-4">
+
+                    <div class="card-header py-3">
+                        <h6 class="m-0 fw-bold text-primary">
+                            Technology Information
+                        </h6>
+                    </div>
+
+                    <div class="card-body">
+
+                        <!-- Validation Error -->
+                        <div th:if="${errorMessage != null}"
+                             class="alert alert-danger"
+                             role="alert">
+
+                            <i class="bi bi-exclamation-circle me-2"></i>
+                            <span th:text="${errorMessage}"></span>
+
+                        </div>
+
+                        <form th:action="@{/dashboard/technologies/update}"
+                              th:object="${technology}"
+                              method="post">
+
+                            <!-- Technology ID -->
+                            <input type="hidden" th:field="*{technologyId}">
+
+                            <div class="row">
+
+                                <!-- Technology Name -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="technologyName"
+                                           class="form-label fw-bold">
+                                        Technology Name
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input type="text"
+                                           class="form-control"
+                                           id="technologyName"
+                                           th:field="*{technologyName}"
+                                           placeholder="e.g. Spring Boot"
+                                           maxlength="100"
+                                           required>
+
+                                </div>
+
+                                <!-- Technology Slug -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="technologySlug"
+                                           class="form-label fw-bold">
+                                        Technology Slug
+                                    </label>
+
+                                    <input type="text"
+                                           class="form-control"
+                                           id="technologySlug"
+                                           th:field="*{technologySlug}"
+                                           placeholder="e.g. spring-boot"
+                                           maxlength="100">
+
+                                    <small class="text-muted">
+                                        Automatically generated from the technology name.
+                                        You can edit it manually.
+                                    </small>
+
+                                </div>
+
+                                <!-- Technology Logo -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="technologyLogo"
+                                           class="form-label fw-bold">
+                                        Technology Logo URL
+                                    </label>
+
+                                    <input type="text"
+                                           class="form-control"
+                                           id="technologyLogo"
+                                           th:field="*{technologyLogo}"
+                                           placeholder="https://example.com/logo.png"
+                                           maxlength="255">
+
+                                </div>
+
+                                <!-- Technology Version -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="technologyVersion"
+                                           class="form-label fw-bold">
+                                        Version
+                                    </label>
+
+                                    <input type="text"
+                                           class="form-control"
+                                           id="technologyVersion"
+                                           th:field="*{technologyVersion}"
+                                           placeholder="e.g. 3.5.0"
+                                           maxlength="50">
+
+                                </div>
+
+                                <!-- Technology Category -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="technologyCategory"
+                                           class="form-label fw-bold">
+                                        Category
+                                    </label>
+
+                                    <select class="form-select"
+                                            id="technologyCategory"
+                                            th:field="*{technologyCategory}">
+
+                                        <option value="">Select Category</option>
+                                        <option value="Language">Language</option>
+                                        <option value="Framework">Framework</option>
+                                        <option value="Frontend Framework">Frontend Framework</option>
+                                        <option value="Library">Library</option>
+                                        <option value="Database">Database</option>
+                                        <option value="CMS">CMS</option>
+                                        <option value="Cloud">Cloud</option>
+                                        <option value="DevOps">DevOps</option>
+                                        <option value="Build Tool">Build Tool</option>
+                                        <option value="Server">Server</option>
+                                        <option value="Messaging">Messaging</option>
+                                        <option value="Runtime">Runtime</option>
+                                        <option value="IDE">IDE</option>
+                                        <option value="Design Tool">Design Tool</option>
+                                        <option value="API Tool">API Tool</option>
+                                        <option value="Version Control">Version Control</option>
+                                        <option value="Backend Service">Backend Service</option>
+                                        <option value="Java Technology">Java Technology</option>
+                                        <option value="WordPress Plugin">WordPress Plugin</option>
+                                        <option value="Other">Other</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                            <hr>
+
+                            <!-- Form Actions -->
+                            <div class="d-flex justify-content-end gap-2">
+
+                                <a th:href="@{/dashboard/technologies}"
+                                   class="btn btn-light border">
+                                    Cancel
+                                </a>
+
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-lg me-2"></i>
+                                    Update Technology
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
+
+    </div>
+</div>
+
+<div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
+<div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
+<div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+
+<!-- Slug Generator -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const nameInput = document.getElementById('technologyName');
+        const slugInput = document.getElementById('technologySlug');
+
+        let slugManuallyEdited = false;
+
+        slugInput.addEventListener('input', function () {
+            slugManuallyEdited = true;
+        });
+
+        nameInput.addEventListener('input', function () {
+
+            if (slugManuallyEdited) {
+                return;
+            }
+
+            slugInput.value = nameInput.value
+                .toLowerCase()
+                .trim()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+
+        });
+
+    });
+</script>
 
 </body>
 </html>

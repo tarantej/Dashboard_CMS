@@ -15,4 +15,20 @@ public interface TechnologyRepo extends JpaRepository<Technology, Integer>
             String technologyCategory,
             Pageable pageable
     );
+
+    boolean existsByTechnologyNameIgnoreCase(String technologyName);
+
+    boolean existsByTechnologySlugIgnoreCase(String technologySlug);
+
+    // Check duplicate name, excluding the current technology
+    boolean existsByTechnologyNameIgnoreCaseAndTechnologyIdNot(
+            String technologyName,
+            Integer technologyId
+    );
+
+    // Check duplicate slug, excluding the current technology
+    boolean existsByTechnologySlugIgnoreCaseAndTechnologyIdNot(
+            String technologySlug,
+            Integer technologyId
+    );
 }
