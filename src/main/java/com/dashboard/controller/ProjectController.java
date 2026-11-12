@@ -11,17 +11,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
-
+import com.dashboard.Technology;
+import com.dashboard.service.TechnologyService;
+import java.util.List;
 import java.util.Optional;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class ProjectController
 {
     private final ProjectService projectService;
+    private final TechnologyService technologyService;
 
-    public ProjectController(ProjectService projectService) {
+    public ProjectController(
+            ProjectService projectService,
+            TechnologyService technologyService) {
+
         this.projectService = projectService;
+        this.technologyService = technologyService;
     }
+
+
 
     @GetMapping("/dashboard/projects")
     public String listProjects(Model model) {
@@ -36,9 +47,7 @@ public class ProjectController
     public String addProject(Model model) {
 
         model.addAttribute("project", new Project());
-        model.addAttribute("statuses", projectService.findAllProjectStatuses());
-        model.addAttribute("types", projectService.findAllProjectTypes());
-        model.addAttribute("pageTitle", "Add Project");
+        populateProjectForm(model, "Add Project");
 
         return "Dashboard/Project/add-project";
     }
@@ -48,6 +57,7 @@ public class ProjectController
             @ModelAttribute("project") Project project,
             @RequestParam Integer statusId,
             @RequestParam Integer typeId,
+            @RequestParam(required = false) List<Integer> technologyIds,
             Model model) {
 
         Optional<ProjectStatus> status =
@@ -57,8 +67,11 @@ public class ProjectController
                 projectService.findProjectTypeById(typeId);
 
         if (status.isEmpty() || type.isEmpty()) {
-            model.addAttribute("statuses", projectService.findAllProjectStatuses());
-            model.addAttribute("types", projectService.findAllProjectTypes());
+            populateProjectForm(
+                    model,
+                    project.getProjectId() == null ? "Add Project" : "Edit Project"
+            );
+
             model.addAttribute("errorMessage", "Invalid project status or type.");
 
             return project.getProjectId() == null
@@ -68,6 +81,35 @@ public class ProjectController
 
         project.setProjectStatus(status.get());
         project.setProjectType(type.get());
+
+        Set<Technology> selectedTechnologies = new HashSet<>();
+
+        if (technologyIds != null) {
+
+            for (Integer technologyId : technologyIds) {
+
+                Optional<Technology> technology =
+                        technologyService.findTechnologyById(technologyId);
+
+                if (technology.isEmpty()) {
+
+                    populateProjectForm(
+                            model,
+                            project.getProjectId() == null ? "Add Project" : "Edit Project"
+                    );
+
+                    model.addAttribute("errorMessage", "Invalid technology selection.");
+
+                    return project.getProjectId() == null
+                            ? "Dashboard/Project/add-project"
+                            : "Dashboard/Project/edit-project";
+                }
+
+                selectedTechnologies.add(technology.get());
+            }
+        }
+
+        project.setTechnologies(selectedTechnologies);
 
         if (project.getProjectSlug() == null ||
                 project.getProjectSlug().isBlank()) {
@@ -83,8 +125,11 @@ public class ProjectController
         if (!projectService.isSlugAvailable(
                 project.getProjectSlug(), project.getProjectId())) {
 
-            model.addAttribute("statuses", projectService.findAllProjectStatuses());
-            model.addAttribute("types", projectService.findAllProjectTypes());
+            populateProjectForm(
+                    model,
+                    project.getProjectId() == null ? "Add Project" : "Edit Project"
+            );
+
             model.addAttribute("errorMessage", "This project slug is already in use.");
 
             return project.getProjectId() == null
@@ -107,9 +152,7 @@ public class ProjectController
         }
 
         model.addAttribute("project", project.get());
-        model.addAttribute("statuses", projectService.findAllProjectStatuses());
-        model.addAttribute("types", projectService.findAllProjectTypes());
-        model.addAttribute("pageTitle", "Edit Project");
+        populateProjectForm(model, "Edit Project");
 
         return "Dashboard/Project/edit-project";
     }
@@ -120,5 +163,14 @@ public class ProjectController
         projectService.deleteProject(id);
 
         return "redirect:/dashboard/projects";
+    }
+
+
+    private void populateProjectForm(Model model, String pageTitle) {
+
+        model.addAttribute("statuses", projectService.findAllProjectStatuses());
+        model.addAttribute("types", projectService.findAllProjectTypes());
+        model.addAttribute("technologies", technologyService.findAllTechnologies());
+        model.addAttribute("pageTitle", pageTitle);
     }
 }
