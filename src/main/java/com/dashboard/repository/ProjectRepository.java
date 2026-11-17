@@ -3,7 +3,7 @@ package com.dashboard.repository;
 import com.dashboard.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.data.jpa.repository.EntityGraph;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +19,7 @@ public interface ProjectRepository extends JpaRepository<Project, Integer>
             Integer projectId
     );
 
+    @EntityGraph(attributePaths = "technologies")
     List<Project> findTop3ByOrderByUpdatedAtDesc();
 
     Optional<Project> findByProjectSlug(String projectSlug);

@@ -5,73 +5,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d1470cc-d5df-42e9-b917-d831b8300cbc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/service/MediaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/DashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/ProjectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/dashboard-cms.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/dashboard-cms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/1wl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/2wp.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/Cooltravelandtours.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/English and Literature.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/Koshish-kkdk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/Sherni.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/aone homepage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/bad-credit-loans-easyloans.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/broken clothing.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/credit lenders full.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/delaware.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/ia icai.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/iaf-pensioners.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/ic icai.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/jamia hamdard.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/ncdpd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/pc-tech-support-home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/pc-tech-support-orange-page.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/simple-media-blue.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/tekmonks.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/trade-essential.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Portfolio/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Portfolio/portfolio.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/add-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/add-project.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/edit-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/edit-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/fragments/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/components/maps/_vector-maps.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/components/notifications/_sweetalerts.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/components/notifications/_toastr.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/components/perfect-scrollbar/_perfect-scrollbar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/components/popovers-tooltips/_popovers-tooltips.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/components/tables/_datatables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/components/tables/_tables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/demo-ui/_demo.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/demo-ui/elements/_layout-themes.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/demo-ui/elements/_theme-options.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/demo/chart-area-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/demo/chart-bar-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/demo/chart-pie-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/demo/datatables-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/images/error-404-monochrome.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/widgets/content-boxes/_content-boxes.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/question-circle.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/rectangle-list.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/rectangle-times.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/rectangle-xmark.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/registered.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/sad-cry.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/sad-tear.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/save.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/share-square.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/smile-beam.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/smile-wink.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/smile.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/snowflake.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/soccer-ball.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/square-caret-down.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/square-caret-right.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/square-caret-up.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/square-check.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/square-minus.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/square-plus.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/square.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/star-half-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/star-half-stroke.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/star-half.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/star.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/sticky-note.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/stop-circle.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/sun.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/surprise.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/thumbs-up.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/times-circle.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/tired.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/trash-can.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/truck.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/user-alt.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/user-large.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/user.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/vcard.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/window-close.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/window-maximize.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/window-minimize.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/vendor/fontawesome-free/svgs/regular/xmark-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/dashboard-cms.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/dashboard-cms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/1wl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/2wp.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/Cooltravelandtours.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/English and Literature.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/Koshish-kkdk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/Sherni.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/aone homepage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/bad-credit-loans-easyloans.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/broken clothing.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/credit lenders full.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/delaware.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/ia icai.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/iaf-pensioners.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/ic icai.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/jamia hamdard.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/ncdpd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/pc-tech-support-home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/pc-tech-support-orange-page.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/simple-media-blue.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/tekmonks.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/trade-essential.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Portfolio/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Portfolio/portfolio.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/add-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/add-project.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/edit-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/edit-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/fragments/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -64,10 +64,10 @@
                                 </div>
 
                                 <!-- Project Title -->
-                                <h5 class="card-title font-weight-bold"
+                                <a th:href="@{/portfolio/{slug}(slug=${project.projectSlug})}"><h5 class="card-title font-weight-bold"
                                     th:text="${project.projectTitle}">
                                     Project Title
-                                </h5>
+                                </h5></a>
 
                                 <!-- Short Description -->
                                 <p class="card-text text-muted"

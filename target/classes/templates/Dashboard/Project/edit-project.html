@@ -27,6 +27,7 @@
                 <form th:action="@{/dashboard/projects/save}"
                       th:object="${project}"
                       method="post"
+                      enctype="multipart/form-data"
                       id="projectForm">
 
                     <input type="hidden" th:field="*{projectId}">
@@ -308,31 +309,30 @@
 
                                     <div class="row align-items-start g-3">
 
-                                        <div class="col">
-
-                                            <label for="projectLogo" class="form-label fw-semibold">
+                                        <div class="mb-3">
+                                            <label for="projectLogoFile" class="form-label fw-semibold">
                                                 Project Logo
                                             </label>
 
-                                            <p class="text-muted small mb-2">
-                                                A small logo or icon that represents the project.
-                                            </p>
+                                            <input type="hidden" th:field="*{projectLogo}">
 
-                                            <div class="input-group">
-                                                <span class="input-group-text bg-white">
-                                                    <i class="bi bi-image"></i>
-                                                </span>
-
-                                                <input type="text"
-                                                       id="projectLogo"
-                                                       class="form-control"
-                                                       placeholder="Enter project logo path...">
+                                            <div th:if="${project.projectLogo != null
+                 and !#strings.isEmpty(project.projectLogo)}"
+                                                 class="mb-2">
+                                                <img th:src="@{${project.projectLogo}}"
+                                                     alt="Current project logo"
+                                                     style="max-width: 100px; max-height: 100px; object-fit: contain;">
                                             </div>
 
-                                            <small class="form-text text-muted">
-                                                Displays on the dashboard and project details page with the title.
-                                            </small>
+                                            <input type="file"
+                                                   id="projectLogoFile"
+                                                   name="projectLogoFile"
+                                                   class="form-control"
+                                                   accept="image/png,image/jpeg,image/webp,image/gif">
 
+                                            <small class="form-text text-muted">
+                                                Select a new file only if you want to replace the current logo.
+                                            </small>
                                         </div>
 
                                         <div class="col-auto">
@@ -350,32 +350,30 @@
 
                                     <div class="row align-items-start g-3">
 
-                                        <div class="col">
-
-                                            <label for="projectFeatureImage" class="form-label fw-semibold">
+                                        <div class="mb-3">
+                                            <label for="projectFeatureImageFile" class="form-label fw-semibold">
                                                 Featured Image
                                             </label>
 
-                                            <p class="text-muted small mb-2">
-                                                A large image used as the project's cover, banner or preview.
-                                            </p>
+                                            <input type="hidden" th:field="*{projectFeatureImage}">
 
-                                            <div class="input-group">
-                                                <span class="input-group-text bg-white">
-                                                    <i class="bi bi-image"></i>
-                                                </span>
-
-                                                <input type="text"
-                                                       id="projectFeatureImage"
-                                                       th:field="*{projectFeatureImage}"
-                                                       class="form-control"
-                                                       placeholder="Enter featured image path...">
+                                            <div th:if="${project.projectFeatureImage != null
+                 and !#strings.isEmpty(project.projectFeatureImage)}"
+                                                 class="mb-2">
+                                                <img th:src="@{${project.projectFeatureImage}}"
+                                                     alt="Current featured image"
+                                                     style="max-width: 180px; max-height: 120px; object-fit: cover;">
                                             </div>
 
-                                            <small class="form-text text-muted">
-                                                Media Library integration will replace this with an image selector.
-                                            </small>
+                                            <input type="file"
+                                                   id="projectFeatureImageFile"
+                                                   name="projectFeatureImageFile"
+                                                   class="form-control"
+                                                   accept="image/png,image/jpeg,image/webp,image/gif">
 
+                                            <small class="form-text text-muted">
+                                                Select a new file only if you want to replace the current image.
+                                            </small>
                                         </div>
 
                                         <div class="col-auto">

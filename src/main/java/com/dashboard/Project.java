@@ -35,6 +35,9 @@ public class Project {
     @Column(name = "demo_url")
     private String demoUrl;
 
+    @Column(name = "project_logo")
+    private String projectLogo;
+
     @Column(name = "project_feature_image")
     private String projectFeatureImage;
 
@@ -117,6 +120,14 @@ public class Project {
 
     public void setDemoUrl(String demoUrl) {
         this.demoUrl = demoUrl;
+    }
+
+    public String getProjectLogo() {
+        return projectLogo;
+    }
+
+    public void setProjectLogo(String projectLogo) {
+        this.projectLogo = projectLogo;
     }
 
     public String getProjectFeatureImage() {

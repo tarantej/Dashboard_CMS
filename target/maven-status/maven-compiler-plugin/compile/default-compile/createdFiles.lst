@@ -1,4 +1,5 @@
 com\dashboard\service\UserService.class
+com\dashboard\service\MediaService.class
 com\dashboard\service\ImageDownloadService.class
 com\dashboard\Technology.class
 com\dashboard\controller\GlobalModelAttributes.class

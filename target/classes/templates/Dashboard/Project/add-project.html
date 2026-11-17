@@ -27,6 +27,7 @@
                 <form th:action="@{/dashboard/projects/save}"
                       th:object="${project}"
                       method="post"
+                      enctype="multipart/form-data"
                       id="projectForm">
 
                     <!-- ====================================== -->
@@ -300,85 +301,42 @@
                                 <!-- Project Logo -->
                                 <div class="col-md-6">
 
-                                    <div class="row align-items-start g-3">
+                                    <label for="projectLogoFile" class="form-label fw-semibold">
+                                        Project Logo
+                                    </label>
 
-                                        <div class="col">
+                                    <input type="file"
+                                           id="projectLogoFile"
+                                           name="projectLogoFile"
+                                           class="form-control"
+                                           accept="image/png,image/jpeg,image/webp,image/gif">
 
-                                            <label for="projectLogo" class="form-label fw-semibold">
-                                                Project Logo
-                                            </label>
+                                    <small class="form-text text-muted">
+                                        Upload a logo or icon for this project.
+                                    </small>
 
-                                            <p class="text-muted small mb-2">
-                                                A small logo or icon that represents the project.
-                                            </p>
-
-                                            <div class="input-group">
-                                                <span class="input-group-text bg-white">
-                                                    <i class="bi bi-image"></i>
-                                                </span>
-
-                                                <input type="text"
-                                                       id="projectLogo"
-                                                       class="form-control"
-                                                       placeholder="Enter project logo path...">
-                                            </div>
-
-                                            <small class="form-text text-muted">
-                                                Displays on the dashboard and project details page with the title.
-                                            </small>
-
-                                        </div>
-
-                                        <div class="col-auto">
-                                            <div class="border rounded bg-light p-3 text-warning">
-                                                <i class="bi bi-grid-3x3-gap fs-3"></i>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                    <!-- Keep the existing logo preview here on Edit Project -->
 
                                 </div>
 
                                 <!-- Featured Image -->
                                 <div class="col-md-6">
 
-                                    <div class="row align-items-start g-3">
+                                    <label for="projectFeatureImageFile" class="form-label fw-semibold">
+                                        Featured Image
+                                    </label>
 
-                                        <div class="col">
+                                    <input type="file"
+                                           id="projectFeatureImageFile"
+                                           name="projectFeatureImageFile"
+                                           class="form-control"
+                                           accept="image/png,image/jpeg,image/webp,image/gif">
 
-                                            <label for="projectFeatureImage" class="form-label fw-semibold">
-                                                Featured Image
-                                            </label>
+                                    <small class="form-text text-muted">
+                                        Upload the project's cover or preview image.
+                                    </small>
 
-                                            <p class="text-muted small mb-2">
-                                                A large image used as the project's cover, banner or preview.
-                                            </p>
-
-                                            <div class="input-group">
-                                                <span class="input-group-text bg-white">
-                                                    <i class="bi bi-image"></i>
-                                                </span>
-
-                                                <input type="text"
-                                                       id="projectFeatureImage"
-                                                       th:field="*{projectFeatureImage}"
-                                                       class="form-control"
-                                                       placeholder="Enter featured image path...">
-                                            </div>
-
-                                            <small class="form-text text-muted">
-                                                Media Library integration will replace this with an image selector.
-                                            </small>
-
-                                        </div>
-
-                                        <div class="col-auto">
-                                            <div class="border rounded bg-light p-3 text-warning">
-                                                <i class="bi bi-card-image fs-3"></i>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                    <!-- Keep the existing featured image preview here on Edit Project -->
 
                                 </div>
 
