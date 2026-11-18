@@ -174,7 +174,35 @@
 
                                     </div>
 
-                                    <form>
+                                    <!-- Success Message -->
+                                    <div th:if="${successMessage}"
+                                         class="alert alert-success alert-dismissible fade show"
+                                         role="alert">
+
+                                        <span th:text="${successMessage}"></span>
+
+                                        <button type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="alert">
+                                        </button>
+
+                                    </div>
+
+                                    <!-- Error Message -->
+                                    <div th:if="${errorMessage}"
+                                         class="alert alert-danger alert-dismissible fade show"
+                                         role="alert">
+
+                                        <span th:text="${errorMessage}"></span>
+
+                                        <button type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="alert">
+                                        </button>
+
+                                    </div>
+
+                                    <form th:action="@{/account-settings}" method="post">
 
                                         <div class="row">
 
@@ -186,8 +214,10 @@
 
                                                 <input
                                                         type="text"
+                                                        name="firstName"
                                                         class="form-control"
-                                                        placeholder="Enter first name">
+                                                        placeholder="Enter first name"
+                                                        th:value="${first_name}">
 
                                             </div>
 
@@ -199,8 +229,10 @@
 
                                                 <input
                                                         type="text"
+                                                        name="lastName"
                                                         class="form-control"
-                                                        placeholder="Enter last name">
+                                                        placeholder="Enter last name"
+                                                        th:value="${last_name}">
 
                                             </div>
 
@@ -214,8 +246,11 @@
 
                                             <input
                                                     type="text"
+                                                    name="username"
                                                     class="form-control"
-                                                    placeholder="Enter username">
+                                                    placeholder="Enter username"
+                                                    th:value="${username}"
+                                                    readonly>
 
                                             <div class="form-text">
                                                 This is your unique username for logging in.
@@ -231,8 +266,10 @@
 
                                             <input
                                                     type="email"
+                                                    name="email"
                                                     class="form-control"
-                                                    placeholder="Enter email address">
+                                                    placeholder="Enter email address"
+                                                    th:value="${email}">
 
                                         </div>
 
@@ -246,28 +283,30 @@
 
                                                 <input
                                                         type="text"
+                                                        name="phoneNumber"
                                                         class="form-control"
-                                                        placeholder="Enter phone number">
+                                                        placeholder="Enter phone number"
+                                                        th:value="${phone_number}">
 
                                             </div>
 
                                             <div class="col-md-6 mb-3">
 
-                                                <label class="form-label fw-semibold">
-                                                    Time Zone
-                                                </label>
+<!--                                                <label class="form-label fw-semibold">-->
+<!--                                                    Time Zone-->
+<!--                                                </label>-->
 
-                                                <select class="form-select">
+<!--                                                <select class="form-select">-->
 
-                                                    <option selected>
-                                                        Select Time Zone
-                                                    </option>
+<!--                                                    <option selected>-->
+<!--                                                        Select Time Zone-->
+<!--                                                    </option>-->
 
-                                                    <option>
-                                                        Asia/Kolkata
-                                                    </option>
+<!--                                                    <option>-->
+<!--                                                        Asia/Kolkata-->
+<!--                                                    </option>-->
 
-                                                </select>
+<!--                                                </select>-->
 
                                             </div>
 
@@ -281,8 +320,36 @@
 
                                             <textarea
                                                     rows="4"
+                                                    name="bio"
                                                     class="form-control"
-                                                    placeholder="Tell us about yourself"></textarea>
+                                                    placeholder="Tell us about yourself"
+                                                    th:text="${bio}">
+
+                                            </textarea>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">City</label>
+                                                <input
+                                                        type="text"
+                                                        name="city"
+                                                        class="form-control"
+                                                        placeholder="Enter city"
+                                                        th:value="${city}">
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">Country</label>
+                                                <input
+                                                        type="text"
+                                                        name="country"
+                                                        class="form-control"
+                                                        placeholder="Enter country"
+                                                        th:value="${country}">
+                                            </div>
 
                                         </div>
 
@@ -307,28 +374,109 @@
                                 <div class="card shadow-sm border-0">
                                     <div class="card-body">
 
-                                        <h4 class="fw-bold mb-4">
-                                            Security Settings
-                                        </h4>
-
-                                        <div class="mb-3">
-                                            <label class="form-label">Current Password</label>
-                                            <input type="password" class="form-control">
+                                        <div th:if="${passwordSuccessMessage}"
+                                             class="alert alert-success"
+                                             th:text="${passwordSuccessMessage}">
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label class="form-label">New Password</label>
-                                            <input type="password" class="form-control">
+                                        <div th:if="${passwordErrorMessage}"
+                                             class="alert alert-danger"
+                                             th:text="${passwordErrorMessage}">
                                         </div>
 
-                                        <div class="mb-4">
-                                            <label class="form-label">Confirm Password</label>
-                                            <input type="password" class="form-control">
-                                        </div>
+                                        <form th:action="@{/account-settings/change-password}"
+                                              method="post">
 
-                                        <button class="btn btn-primary">
-                                            Update Password
-                                        </button>
+                                            <div class="mb-3">
+                                                <label class="form-label">Current Password</label>
+
+                                                <input type="password"
+                                                       name="currentPassword"
+                                                       class="form-control"
+                                                       placeholder="Enter current password"
+                                                       autocomplete="current-password"
+                                                       required>
+                                            </div>
+
+                                            <div class="mb-3">
+
+                                                <label class="form-label">New Password</label>
+
+                                                <div class="input-group">
+
+                                                    <input type="password"
+                                                           name="newPassword"
+                                                           id="newPassword"
+                                                           class="form-control"
+                                                           placeholder="Enter new password"
+                                                           minlength="8"
+                                                           autocomplete="new-password"
+                                                           required>
+
+                                                    <button type="button"
+                                                            class="btn btn-outline-secondary"
+                                                            onclick="togglePassword('newPassword', this)"
+                                                            title="Show or hide password">
+                                                        <i class="bi bi-eye"></i>
+                                                    </button>
+
+                                                </div>
+
+                                                <div class="mt-2 d-flex gap-2">
+
+                                                    <button type="button"
+                                                            class="btn btn-outline-primary btn-sm"
+                                                            onclick="generatePassword()">
+                                                        <i class="bi bi-magic me-1"></i>
+                                                        Generate Password
+                                                    </button>
+
+                                                    <button type="button"
+                                                            class="btn btn-outline-secondary btn-sm"
+                                                            onclick="copyPassword()">
+                                                        <i class="bi bi-clipboard me-1"></i>
+                                                        Copy
+                                                    </button>
+
+                                                </div>
+
+                                                <small class="text-muted">
+                                                    Generate a secure password or enter your own.
+                                                </small>
+
+                                            </div>
+
+                                            <div class="mb-4">
+
+                                                <label class="form-label">Confirm Password</label>
+
+                                                <div class="input-group">
+
+                                                    <input type="password"
+                                                           name="confirmPassword"
+                                                           id="confirmPassword"
+                                                           class="form-control"
+                                                           placeholder="Confirm new password"
+                                                           minlength="8"
+                                                           autocomplete="new-password"
+                                                           required>
+
+                                                    <button type="button"
+                                                            class="btn btn-outline-secondary"
+                                                            onclick="togglePassword('confirmPassword', this)">
+                                                        <i class="bi bi-eye"></i>
+                                                    </button>
+
+                                                </div>
+
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="bi bi-shield-lock me-2"></i>
+                                                Update Password
+                                            </button>
+
+                                        </form>
 
                                     </div>
                                 </div>
@@ -337,127 +485,127 @@
                             </div>
 
                             <!--  Notification Settings -->
-                            <div id="notifications-section" class="settings-section d-none">
+<!--                            <div id="notifications-section" class="settings-section d-none">-->
 
-                                <div class="card shadow-sm border-0">
-                                    <div class="card-body">
+<!--                                <div class="card shadow-sm border-0">-->
+<!--                                    <div class="card-body">-->
 
-                                        <h4 class="fw-bold mb-4">
-                                            Notification Preferences
-                                        </h4>
+<!--                                        <h4 class="fw-bold mb-4">-->
+<!--                                            Notification Preferences-->
+<!--                                        </h4>-->
 
-                                        <p class="text-muted mb-4">
-                                            Choose which emails you want to receive from us.
-                                        </p>
+<!--                                        <p class="text-muted mb-4">-->
+<!--                                            Choose which emails you want to receive from us.-->
+<!--                                        </p>-->
 
-                                        <div class="row">
+<!--                                        <div class="row">-->
 
-                                            <div class="col-md-6">
+<!--                                            <div class="col-md-6">-->
 
-                                                <div class="d-flex justify-content-between align-items-center mb-4">
+<!--                                                <div class="d-flex justify-content-between align-items-center mb-4">-->
 
-                                                    <div>
+<!--                                                    <div>-->
 
-                                                        <div class="fw-semibold">
-                                                            Product Updates
-                                                        </div>
+<!--                                                        <div class="fw-semibold">-->
+<!--                                                            Product Updates-->
+<!--                                                        </div>-->
 
-                                                        <small class="text-muted">
-                                                            Receive updates about new features and improvements.
-                                                        </small>
+<!--                                                        <small class="text-muted">-->
+<!--                                                            Receive updates about new features and improvements.-->
+<!--                                                        </small>-->
 
-                                                    </div>
+<!--                                                    </div>-->
 
-                                                    <div class="form-check form-switch">
+<!--                                                    <div class="form-check form-switch">-->
 
-                                                        <input
-                                                                class="form-check-input"
-                                                                type="checkbox"
-                                                                id="productUpdates" checked>
+<!--                                                        <input-->
+<!--                                                                class="form-check-input"-->
+<!--                                                                type="checkbox"-->
+<!--                                                                id="productUpdates" checked>-->
 
-                                                    </div>
+<!--                                                    </div>-->
 
-                                                </div>
+<!--                                                </div>-->
 
-                                                <div class="d-flex justify-content-between align-items-center">
+<!--                                                <div class="d-flex justify-content-between align-items-center">-->
 
-                                                    <div>
+<!--                                                    <div>-->
 
-                                                        <div class="fw-semibold">
-                                                            Weekly Summary
-                                                        </div>
+<!--                                                        <div class="fw-semibold">-->
+<!--                                                            Weekly Summary-->
+<!--                                                        </div>-->
 
-                                                        <small class="text-muted">
-                                                            Get a weekly summary of your activity.
-                                                        </small>
+<!--                                                        <small class="text-muted">-->
+<!--                                                            Get a weekly summary of your activity.-->
+<!--                                                        </small>-->
 
-                                                    </div>
+<!--                                                    </div>-->
 
-                                                    <div class="form-check form-switch">
+<!--                                                    <div class="form-check form-switch">-->
 
-                                                        <input
-                                                                class="form-check-input"
-                                                                type="checkbox"
-                                                                id="weeklySummary" checked>
+<!--                                                        <input-->
+<!--                                                                class="form-check-input"-->
+<!--                                                                type="checkbox"-->
+<!--                                                                id="weeklySummary" checked>-->
 
-                                                    </div>
+<!--                                                    </div>-->
 
-                                                </div>
+<!--                                                </div>-->
 
-                                            </div>
+<!--                                            </div>-->
 
-                                            <div class="col-md-6">
-                                                <div class="d-flex justify-content-between align-items-center mb-4">
-                                                    <div>
-                                                        <div class="fw-semibold">
-                                                            Marketing Emails
-                                                        </div>
-                                                        <small class="text-muted">
-                                                            Receive emails about new products and offers.
-                                                        </small>
-                                                    </div>
-                                                    <div class="form-check form-switch">
-                                                        <input
-                                                                class="form-check-input"
-                                                                type="checkbox"
-                                                                id="marketingEmails" checked>
-                                                    </div>
-                                                </div>
+<!--                                            <div class="col-md-6">-->
+<!--                                                <div class="d-flex justify-content-between align-items-center mb-4">-->
+<!--                                                    <div>-->
+<!--                                                        <div class="fw-semibold">-->
+<!--                                                            Marketing Emails-->
+<!--                                                        </div>-->
+<!--                                                        <small class="text-muted">-->
+<!--                                                            Receive emails about new products and offers.-->
+<!--                                                        </small>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="form-check form-switch">-->
+<!--                                                        <input-->
+<!--                                                                class="form-check-input"-->
+<!--                                                                type="checkbox"-->
+<!--                                                                id="marketingEmails" checked>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
 
-                                                <div class="d-flex justify-content-between align-items-center">
+<!--                                                <div class="d-flex justify-content-between align-items-center">-->
 
-                                                    <div>
+<!--                                                    <div>-->
 
-                                                        <div class="fw-semibold">
-                                                            Security Alerts
-                                                        </div>
+<!--                                                        <div class="fw-semibold">-->
+<!--                                                            Security Alerts-->
+<!--                                                        </div>-->
 
-                                                        <small class="text-muted">
-                                                            Important security updates about your account.
-                                                        </small>
+<!--                                                        <small class="text-muted">-->
+<!--                                                            Important security updates about your account.-->
+<!--                                                        </small>-->
 
-                                                    </div>
+<!--                                                    </div>-->
 
-                                                    <div class="form-check form-switch">
+<!--                                                    <div class="form-check form-switch">-->
 
-                                                        <input
-                                                                class="form-check-input"
-                                                                type="checkbox"
-                                                                id="securityAlerts" checked>
+<!--                                                        <input-->
+<!--                                                                class="form-check-input"-->
+<!--                                                                type="checkbox"-->
+<!--                                                                id="securityAlerts" checked>-->
 
-                                                    </div>
+<!--                                                    </div>-->
 
-                                                </div>
+<!--                                                </div>-->
 
-                                            </div>
+<!--                                            </div>-->
 
-                                        </div>
+<!--                                        </div>-->
 
-                                    </div>
-                                </div>
+<!--                                    </div>-->
+<!--                                </div>-->
 
-                                <!-- End Notification Settings Section -->
-                            </div>
+<!--                                &lt;!&ndash; End Notification Settings Section &ndash;&gt;-->
+<!--                            </div>-->
 
                             <!-- Danger Zone Settings  -->
 
@@ -547,6 +695,121 @@
                 .classList.remove('d-none');
 
             menuItem.classList.add('settings-active');
+        }
+    </script>
+
+<!--  Generate New random password  -->
+
+    <script th:inline="javascript">
+        // Generate secure random password
+        function generatePassword() {
+
+            const length = 16;
+
+            const uppercase = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+            const lowercase = "abcdefghijkmnopqrstuvwxyz";
+            const numbers = "23456789";
+            const symbols = "!@#$%^&*_-+=";
+
+            const allCharacters =
+                uppercase + lowercase + numbers + symbols;
+
+            const required = [
+                uppercase,
+                lowercase,
+                numbers,
+                symbols
+            ];
+
+            // Cryptographically secure random selection
+            function randomIndex(max) {
+
+                const limit = Math.floor(256 / max) * max;
+                const bytes = new Uint8Array(1);
+
+                do {
+                    crypto.getRandomValues(bytes);
+                } while (bytes[0] >= limit);
+
+                return bytes[0] % max;
+            }
+
+            const password = [];
+
+            // Guarantee at least one character from each group
+            required.forEach(group => {
+                password.push(group[randomIndex(group.length)]);
+            });
+
+            // Fill remaining characters
+            while (password.length < length) {
+                password.push(
+                    allCharacters[randomIndex(allCharacters.length)]
+                );
+            }
+
+            // Shuffle password characters
+            for (let i = password.length - 1; i > 0; i--) {
+
+                const j = randomIndex(i + 1);
+
+                [password[i], password[j]] =
+                    [password[j], password[i]];
+            }
+
+            const generatedPassword = password.join("");
+
+            document.getElementById("newPassword").value =
+                generatedPassword;
+
+            document.getElementById("confirmPassword").value =
+                generatedPassword;
+        }
+
+
+        // Show / Hide password
+        function togglePassword(inputId, button) {
+
+            const input = document.getElementById(inputId);
+            const icon = button.querySelector("i");
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.replace("bi-eye", "bi-eye-slash");
+
+            } else {
+
+                input.type = "password";
+
+                icon.classList.replace("bi-eye-slash", "bi-eye");
+            }
+        }
+
+
+        // Copy generated password
+        async function copyPassword() {
+
+            const password =
+                document.getElementById("newPassword").value;
+
+            if (!password) {
+                alert("Please generate or enter a password first.");
+                return;
+            }
+
+            try {
+
+                await navigator.clipboard.writeText(password);
+
+                alert("Password copied to clipboard!");
+
+            } catch (error) {
+
+                alert("Unable to copy password. Please copy it manually.");
+
+            }
         }
     </script>
 

@@ -18,4 +18,15 @@ public interface UserRepository extends JpaRepository<DashboardUsers, Integer> {
             String username,
             String email,
             Pageable pageable);
+
+    Page<DashboardUsers> findByUserRole(
+            String userRole,
+            Pageable pageable);
+
+    Page<DashboardUsers> findByUserRoleAndUsernameContainingIgnoreCaseOrUserRoleAndEmailContainingIgnoreCase(
+            String role1,
+            String username,
+            String role2,
+            String email,
+            Pageable pageable);
 }

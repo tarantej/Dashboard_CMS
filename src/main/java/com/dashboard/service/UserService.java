@@ -44,6 +44,33 @@ public class UserService {
                 pageable);
     }
 
+    public Page<DashboardUsers> findUsers(
+            String search,
+            String role,
+            Pageable pageable) {
+
+        boolean hasSearch = search != null && !search.isBlank();
+        boolean hasRole = role != null && !role.isBlank();
+
+        if (!hasRole) {
+            return findUsers(search, pageable);
+        }
+
+        if (!hasSearch) {
+            return userRepository.findByUserRole(role, pageable);
+        }
+
+        String searchTerm = search.trim();
+
+        return userRepository
+                .findByUserRoleAndUsernameContainingIgnoreCaseOrUserRoleAndEmailContainingIgnoreCase(
+                        role,
+                        searchTerm,
+                        role,
+                        searchTerm,
+                        pageable);
+    }
+
     public List<UserRole> findAllRoles() {
         return userRoleRepository.findAllByOrderByIdAsc();
     }
@@ -79,6 +106,8 @@ public class UserService {
 
         // Save user
         return userRepository.save(user);
+
+
     }
 
 }

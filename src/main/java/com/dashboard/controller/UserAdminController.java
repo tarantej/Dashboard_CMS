@@ -26,16 +26,21 @@ public class UserAdminController
     @GetMapping("/admin/users")
     public String userIndex(
             @RequestParam(defaultValue = "") String search,
+            @RequestParam(defaultValue = "") String role,
             @RequestParam(defaultValue = "0") int page,
             Model model) {
 
         Pageable pageable = PageRequest.of(page, 10);
 
         Page<DashboardUsers> users =
-                userService.findUsers(search, pageable);
+                userService.findUsers(search, role, pageable);
+
+        List<UserRole> roles = userService.findAllRoles();
 
         model.addAttribute("users", users);
+        model.addAttribute("roles", roles);
         model.addAttribute("search", search);
+        model.addAttribute("selectedRole", role);
         model.addAttribute("pageTitle", "Users");
 
         return "Dashboard/User/users-index";

@@ -5,70 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d1470cc-d5df-42e9-b917-d831b8300cbc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/service/MediaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/ProjectRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/dashboard-cms.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/dashboard-cms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/1wl.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/2wp.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/Cooltravelandtours.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/English and Literature.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/Koshish-kkdk.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/Sherni.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/aone homepage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/bad-credit-loans-easyloans.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/broken clothing.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/credit lenders full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/delaware.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/ia icai.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/iaf-pensioners.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/ic icai.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/jamia hamdard.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/ncdpd.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/pc-tech-support-home.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/pc-tech-support-orange-page.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/simple-media-blue.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/tekmonks.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/portfolio/trade-essential.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Portfolio/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Portfolio/portfolio.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/add-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/add-project.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/edit-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/edit-project.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/fragments/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/dashboard-cms.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/dashboard-cms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/1wl.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/2wp.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/Cooltravelandtours.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/English and Literature.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/Koshish-kkdk.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/Sherni.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/aone homepage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/bad-credit-loans-easyloans.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/broken clothing.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/credit lenders full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/delaware.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/ia icai.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/iaf-pensioners.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/ic icai.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/jamia hamdard.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/ncdpd.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/pc-tech-support-home.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/pc-tech-support-orange-page.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/simple-media-blue.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/tekmonks.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/portfolio/trade-essential.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Portfolio/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Portfolio/portfolio.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/add-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/add-project.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/edit-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/edit-project.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/fragments/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/UserAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/UserAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/UserSettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/UserSettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/account-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/account-settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/users-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/users-index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
