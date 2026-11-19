@@ -5,6 +5,9 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends JpaRepository<DashboardUsers, Integer> {
 
@@ -28,5 +31,21 @@ public interface UserRepository extends JpaRepository<DashboardUsers, Integer> {
             String username,
             String role2,
             String email,
+            Pageable pageable);
+
+    @Query("""
+    SELECT u FROM DashboardUsers u
+    WHERE u.userRole IN :roles
+    AND (:provider = '' OR u.oauthProvider = :provider)
+    AND (
+        :search = ''
+        OR LOWER(u.username) LIKE LOWER(CONCAT('%', :search, '%'))
+        OR LOWER(u.email) LIKE LOWER(CONCAT('%', :search, '%'))
+    )
+    """)
+    Page<DashboardUsers> findByRolesSearchAndProvider(
+            @Param("roles") List<String> roles,
+            @Param("search") String search,
+            @Param("provider") String provider,
             Pageable pageable);
 }

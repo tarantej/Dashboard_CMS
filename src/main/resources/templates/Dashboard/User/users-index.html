@@ -57,33 +57,35 @@
                         <ul class="nav nav-tabs card-header-tabs">
 
                             <li class="nav-item">
-                                <a class="nav-link active"
-                                   th:href="@{/admin/users}">
+                                <a class="nav-link"
+                                   th:classappend="${selectedRoleGroup == null or selectedRoleGroup.isEmpty()} ? 'active'"
+                                   th:href="@{/admin/users(search=${search})}">
                                     All Users
                                     <span class="badge badge-secondary"
-                                          th:text="${users.totalElements}">
-                                        0
-                                    </span>
+                                          th:text="${users.totalElements}">0</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   th:href="@{/admin/users(roleGroup='administrators')}">
+                                   th:classappend="${selectedRoleGroup == 'administrators'} ? 'active'"
+                                   th:href="@{/admin/users(roleGroup='administrators', search=${search})}">
                                     Administrators
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   th:href="@{/admin/users(roleGroup='employees')}">
+                                   th:classappend="${selectedRoleGroup == 'employees'} ? 'active'"
+                                   th:href="@{/admin/users(roleGroup='employees', search=${search})}">
                                     Employees
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   th:href="@{/admin/users(roleGroup='other')}">
+                                   th:classappend="${selectedRoleGroup == 'other'} ? 'active'"
+                                   th:href="@{/admin/users(roleGroup='other', search=${search})}">
                                     Other Roles
                                 </a>
                             </li>
@@ -130,6 +132,10 @@
                                            name="search"
                                            th:value="${search}">
 
+                                    <input type="hidden"
+                                           name="roleGroup"
+                                           th:value="${selectedRoleGroup}">
+
                                     <select class="custom-select"
                                             name="role"
                                             onchange="this.form.submit()">
@@ -151,14 +157,45 @@
                             <!-- Provider Filter -->
                             <div class="col-lg-2 mb-3 mb-lg-0">
 
-                                <select class="custom-select"
-                                        id="providerFilter"
-                                        name="provider">
-                                    <option value="">All Providers</option>
-                                    <option value="Local">Local</option>
-                                    <option value="GOOGLE">Google</option>
-                                    <option value="GITHUB">GitHub</option>
-                                </select>
+                                <form th:action="@{/admin/users}" method="get">
+
+                                    <input type="hidden"
+                                           name="search"
+                                           th:value="${search}">
+
+                                    <input type="hidden"
+                                           name="role"
+                                           th:value="${selectedRole}">
+
+                                    <input type="hidden"
+                                           name="roleGroup"
+                                           th:value="${selectedRoleGroup}">
+
+                                    <select class="custom-select"
+                                            id="providerFilter"
+                                            name="provider"
+                                            onchange="this.form.submit()">
+
+                                        <option value="">All Providers</option>
+
+                                        <option value="LOCAL"
+                                                th:selected="${selectedProvider == 'LOCAL'}">
+                                            Local
+                                        </option>
+
+                                        <option value="GOOGLE"
+                                                th:selected="${selectedProvider == 'GOOGLE'}">
+                                            Google
+                                        </option>
+
+                                        <option value="GITHUB"
+                                                th:selected="${selectedProvider == 'GITHUB'}">
+                                            GitHub
+                                        </option>
+
+                                    </select>
+
+                                </form>
 
                             </div>
 
@@ -171,6 +208,10 @@
                                     <input type="hidden"
                                            name="role"
                                            th:value="${selectedRole}">
+
+                                    <input type="hidden"
+                                           name="roleGroup"
+                                           th:value="${selectedRoleGroup}">
 
                                     <div class="input-group">
 
@@ -386,7 +427,7 @@
                                         th:classappend="${users.first} ? 'disabled'">
 
                                         <a class="page-link"
-                                           th:href="@{/admin/users(page=0, search=${search}, role=${selectedRole})}">
+                                           th:href="@{/admin/users(page=0, search=${search}, role=${selectedRole},roleGroup=${selectedRoleGroup})}">
                                             <i class="fas fa-angle-double-left"></i>
                                         </a>
 
@@ -397,7 +438,7 @@
                                         th:classappend="${users.first} ? 'disabled'">
 
                                         <a class="page-link"
-                                           th:href="@{/admin/users(page=${users.number - 1}, search=${search}, role=${selectedRole})}">
+                                           th:href="@{/admin/users(page=${users.number - 1}, search=${search}, role=${selectedRole}, roleGroup=${selectedRoleGroup})}">
                                             <i class="fas fa-chevron-left"></i>
                                         </a>
 
@@ -409,7 +450,7 @@
                                         th:classappend="${pageNumber == users.number} ? 'active'">
 
                                         <a class="page-link"
-                                           th:href="@{/admin/users(page=${pageNumber}, search=${search}, role=${selectedRole})}""
+                                           th:href="@{/admin/users(page=${pageNumber}, search=${search}, role=${selectedRole},roleGroup=${selectedRoleGroup})}"
                                            th:text="${pageNumber + 1}">
                                         </a>
 
@@ -420,7 +461,7 @@
                                         th:classappend="${users.last} ? 'disabled'">
 
                                         <a class="page-link"
-                                           th:href="@{/admin/users(page=${users.number + 1}, search=${search}, role=${selectedRole})}">
+                                           th:href="@{/admin/users(page=${users.number + 1}, search=${search}, role=${selectedRole}, roleGroup=${selectedRoleGroup})}">
                                             <i class="fas fa-chevron-right"></i>
                                         </a>
 
@@ -431,7 +472,7 @@
                                         th:classappend="${users.last} ? 'disabled'">
 
                                         <a class="page-link"
-                                           th:href="@{/admin/users(page=${users.totalPages - 1}, search=${search}, role=${selectedRole})}">
+                                           th:href="@{/admin/users(page=${users.totalPages - 1}, search=${search}, role=${selectedRole}, roleGroup=${selectedRoleGroup})}">
                                             <i class="fas fa-angle-double-right"></i>
                                         </a>
 

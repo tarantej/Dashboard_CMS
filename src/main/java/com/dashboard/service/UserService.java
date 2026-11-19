@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import com.dashboard.UserRole;
 import com.dashboard.repository.UserRoleRepository;
 import java.util.List;
-
-import com.dashboard.repository.UserRoleRepository;
+import java.util.Locale;
+import java.util.Set;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.sql.Timestamp;
 
@@ -69,6 +69,128 @@ public class UserService {
                         role,
                         searchTerm,
                         pageable);
+    }
+
+    public Page<DashboardUsers> findUsers(
+            String search,
+            String role,
+            String roleGroup,
+            String provider,
+            Pageable pageable) {
+
+        Set<String> administratorRoles =
+                Set.of("SUPER_ADMIN", "ADMINISTRATOR");
+
+        // Start with all roles stored in the database.
+        List<String> availableRoles = userRoleRepository
+                .findAllByOrderByIdAsc()
+                .stream()
+                .map(UserRole::getRole)
+                .toList();
+
+        List<String> groupRoles;
+
+        // Determine the selected role group.
+        if (roleGroup == null || roleGroup.isBlank()) {
+            groupRoles = availableRoles;
+        } else {
+            switch (roleGroup.toLowerCase(Locale.ROOT)) {
+                case "administrators":
+                    groupRoles = availableRoles.stream()
+                            .filter(administratorRoles::contains)
+                            .toList();
+                    break;
+
+                case "employees":
+                    groupRoles = availableRoles.stream()
+                            .filter("EMPLOYEE"::equals)
+                            .toList();
+                    break;
+
+                case "other":
+                    groupRoles = availableRoles.stream()
+                            .filter(roleName ->
+                                    !administratorRoles.contains(roleName)
+                                            && !"EMPLOYEE".equals(roleName))
+                            .toList();
+                    break;
+
+                default:
+                    return Page.empty(pageable);
+            }
+        }
+
+        // Apply the individual role dropdown if selected.
+        if (role != null && !role.isBlank()) {
+            groupRoles = groupRoles.stream()
+                    .filter(role::equals)
+                    .toList();
+        }
+
+        if (groupRoles.isEmpty()) {
+            return Page.empty(pageable);
+        }
+
+        String searchTerm =
+                search == null ? "" : search.trim();
+
+        String providerFilter =
+                provider == null ? "" : provider.trim().toUpperCase(Locale.ROOT);
+
+        return userRepository.findByRolesSearchAndProvider(
+                groupRoles,
+                searchTerm,
+                providerFilter,
+                pageable);
+    }
+
+    public DashboardUsers getUserById(Integer id) {
+        return userRepository.findById(id)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("User not found"));
+    }
+
+    public DashboardUsers updateUser(
+            Integer id,
+            DashboardUsers updatedUser) {
+
+        DashboardUsers existingUser = getUserById(id);
+
+        // Validate email uniqueness
+        userRepository.findByEmail(updatedUser.getEmail())
+                .ifPresent(user -> {
+                    if (!user.getUserId().equals(id)) {
+                        throw new IllegalArgumentException(
+                                "Email already exists");
+                    }
+                });
+
+        // Validate role against the database
+        boolean validRole = userRoleRepository
+                .findAllByOrderByIdAsc()
+                .stream()
+                .anyMatch(role ->
+                        role.getRole().equals(updatedUser.getUserRole()));
+
+        if (!validRole) {
+            throw new IllegalArgumentException("Invalid user role");
+        }
+
+        // Update permitted fields
+        existingUser.setEmail(updatedUser.getEmail());
+        existingUser.setFirstName(updatedUser.getFirstName());
+        existingUser.setLastName(updatedUser.getLastName());
+        existingUser.setUserRole(updatedUser.getUserRole());
+        existingUser.setPhoneNumber(updatedUser.getPhoneNumber());
+        existingUser.setUserBio(updatedUser.getUserBio());
+        existingUser.setUserCity(updatedUser.getUserCity());
+        existingUser.setUserCountry(updatedUser.getUserCountry());
+
+        // Update timestamp
+        existingUser.setUpdatedAt(
+                new Timestamp(System.currentTimeMillis()));
+
+        return userRepository.save(existingUser);
     }
 
     public List<UserRole> findAllRoles() {
