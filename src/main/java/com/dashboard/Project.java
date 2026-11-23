@@ -41,6 +41,9 @@ public class Project {
     @Column(name = "project_feature_image")
     private String projectFeatureImage;
 
+    @Column(name = "publish_status", nullable = false, length = 20)
+    private String publishStatus = "DRAFT";
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status_id", nullable = false)
     private ProjectStatus projectStatus;
@@ -136,6 +139,14 @@ public class Project {
 
     public void setProjectFeatureImage(String projectFeatureImage) {
         this.projectFeatureImage = projectFeatureImage;
+    }
+
+    public String getPublishStatus() {
+        return publishStatus;
+    }
+
+    public void setPublishStatus(String publishStatus) {
+        this.publishStatus = publishStatus;
     }
 
     public ProjectStatus getProjectStatus() {

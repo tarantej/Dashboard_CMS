@@ -47,6 +47,7 @@
                                     <th>Slug</th>
                                     <th>Type</th>
                                     <th>Status</th>
+                                    <th>Publish Status</th>
                                     <th>Featured</th>
                                     <th>Order</th>
                                     <th>Last Modified</th>
@@ -86,6 +87,18 @@
                                     </td>
 
                                     <td>
+                                        <span class="badge"
+                                              th:classappend="${project.publishStatus == 'PUBLISHED' ? ' badge-success' :
+                                                               project.publishStatus == 'DRAFT' ? ' badge-secondary' :
+                                                               project.publishStatus == 'UNDER_REVIEW' ? ' badge-warning' :
+                                                               ' badge-danger'}"
+                                              th:text="${project.publishStatus == 'UNDER_REVIEW' ? 'Under Review' :
+                                                       #strings.capitalize(#strings.toLowerCase(project.publishStatus))}">
+                                            Publish Status
+                                        </span>
+                                    </td>
+
+                                    <td>
                                         <span th:if="${project.featuredProject}"
                                               class="badge badge-warning">
                                             Featured
@@ -107,6 +120,12 @@
                                     </td>
 
                                     <td class="text-center">
+
+                                        <a th:href="@{/dashboard/projects/{slug}(slug=${project.projectSlug})}"
+                                           class="btn btn-sm btn-outline-secondary"
+                                           title="View Project">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
 
                                         <a th:href="@{/dashboard/projects/edit/{id}(id=${project.projectId})}"
                                            class="btn btn-sm btn-outline-primary"
@@ -132,7 +151,7 @@
                                 </tr>
 
                                 <tr th:if="${#lists.isEmpty(projects)}">
-                                    <td colspan="8" class="text-center text-muted py-4">
+                                    <td colspan="9" class="text-center text-muted py-4">
                                         No projects found.
                                     </td>
                                 </tr>

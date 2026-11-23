@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{Dashboard/fragments/header :: header('All Projects')}"></head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div th:replace="~{Dashboard/fragments/sidebar :: sidebar}"></div>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+            <!-- Topbar -->
+            <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
+
+            <!-- Begin Project Content -->
+            <div class="container-fluid">
+
+                <!-- Breadcrumb -->
+                <div th:replace="~{Dashboard/fragments/breadcrumb :: breadcrumb}"></div>
+
+                <!-- Project Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <div>
+                        <h1 class="h3 mb-1 text-gray-800">All Projects</h1>
+                        <p class="mb-0 text-muted">
+                            A collection of web, e-commerce and custom application projects.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Projects -->
+                <div class="row">
+
+                    <div class="col-xl-4 col-lg-6 col-md-6 mb-4"
+                         th:each="project : ${projects}">
+
+                        <div class="card shadow-sm h-100">
+
+                            <!-- Project Feature Image -->
+                            <img th:if="${project.projectFeatureImage != null
+                         and !#strings.isEmpty(project.projectFeatureImage)}"
+                                 th:src="@{${project.projectFeatureImage}}"
+                                 class="card-img-top"
+                                 th:alt="${project.projectTitle}"
+                                 style="height: 190px; object-fit: cover;">
+
+                            <!-- Project Information -->
+                            <div class="card-body d-flex flex-column">
+
+                                <!-- Project Type and Status -->
+                                <div class="mb-3">
+
+                                    <span class="badge"
+                                          th:classappend="'badge-' + ${project.projectType.typeColor}"
+                                          th:text="${project.projectType.typeName}">
+</span>
+
+                                </div>
+
+                                <!-- Project Title -->
+                                <a th:href="@{/dashboard/projects/{slug}(slug=${project.projectSlug})}"><h5 class="card-title font-weight-bold"
+                                                                                                   th:text="${project.projectTitle}">
+                                    Project Title
+                                </h5></a>
+
+                                <!-- Short Description -->
+                                <p class="card-text text-muted"
+                                   th:text="${project.shortDescription}">
+                                    Project description
+                                </p>
+
+                                <!-- Spacer -->
+                                <div class="mt-auto">
+
+                                    <!-- Updated Date -->
+                                    <p class="small text-muted mb-3">
+                                        <i class="fas fa-calendar-alt mr-1"></i>
+                                        Updated
+                                        <span th:text="${#dates.format(project.updatedAt, 'dd MMM yyyy')}">
+                            06 Nov 2026
+                        </span>
+                                    </p>
+
+                                    <!-- View Project -->
+                                    <a th:href="@{/dashboard/projects/{slug}(slug=${project.projectSlug})}"
+                                       class="btn btn-outline-primary btn-sm btn-block">
+                                        <i class="fas fa-external-link-alt mr-1"></i>
+                                        View Project
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- End Portfolio Projects -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Copyright -->
+        <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
+        <!-- End of Copyright -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
+
+<!-- Logout Modal-->
+<div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
+
+<!-- Footer -->
+<div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+<!-- End of Footer -->
+
+</body>
+
+</html>

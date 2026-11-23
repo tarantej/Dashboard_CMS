@@ -80,4 +80,19 @@ public class ProjectService
     public Optional<Project> findProjectBySlug(String slug) {
         return projectRepository.findByProjectSlug(slug);
     }
+
+    public List<Project> findPublishedProjects() {
+        return projectRepository
+                .findAllByPublishStatusOrderByDisplayOrderAsc("PUBLISHED");
+    }
+
+    public Optional<Project> findPublishedProjectBySlug(String slug) {
+        return projectRepository
+                .findByProjectSlugAndPublishStatus(slug, "PUBLISHED");
+    }
+
+    public List<Project> findLatestThreePublishedProjects() {
+        return projectRepository
+                .findTop3ByPublishStatusOrderByUpdatedAtDesc("PUBLISHED");
+    }
 }

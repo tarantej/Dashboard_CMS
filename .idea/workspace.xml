@@ -5,13 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d1470cc-d5df-42e9-b917-d831b8300cbc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/edit-user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/all-projects.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/project-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/UserAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/UserAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/users-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/users-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/User/users-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/User/users-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/PortfolioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/PortfolioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/repository/ProjectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dashboard/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dashboard/service/ProjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/add-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/add-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/edit-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/edit-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/project-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/Project/project-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/system-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/User/system-settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Dashboard/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/error/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/add-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/add-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/edit-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/edit-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/project-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/Project/project-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/User/system-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/User/system-settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Dashboard/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Dashboard/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/error/404.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

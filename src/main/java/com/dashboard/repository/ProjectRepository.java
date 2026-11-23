@@ -23,4 +23,17 @@ public interface ProjectRepository extends JpaRepository<Project, Integer>
     List<Project> findTop3ByOrderByUpdatedAtDesc();
 
     Optional<Project> findByProjectSlug(String projectSlug);
+
+    List<Project> findAllByPublishStatusOrderByDisplayOrderAsc(
+            String publishStatus
+    );
+
+    Optional<Project> findByProjectSlugAndPublishStatus(
+            String projectSlug,
+            String publishStatus
+    );
+
+    List<Project> findTop3ByPublishStatusOrderByUpdatedAtDesc(
+            String publishStatus
+    );
 }

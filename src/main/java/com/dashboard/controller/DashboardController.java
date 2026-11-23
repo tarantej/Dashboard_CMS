@@ -104,7 +104,7 @@ public class DashboardController {
         List<Project> projects = projectService.findAllProjects();
 
         List<Project> recentProjects =
-                projectService.findLatestThreeProjects();
+                projectService.findLatestThreePublishedProjects();
 
         model.addAttribute("recentProjects", recentProjects);
 

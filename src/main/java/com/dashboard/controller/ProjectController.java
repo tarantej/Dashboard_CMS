@@ -4,6 +4,7 @@ import com.dashboard.Project;
 import com.dashboard.ProjectStatus;
 import com.dashboard.ProjectType;
 import com.dashboard.service.ProjectService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +23,9 @@ import com.dashboard.service.MediaService;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 @Controller
 public class ProjectController
 {
@@ -39,6 +43,8 @@ public class ProjectController
         this.mediaService = mediaService;
     }
 
+    @Value("${app.base-url}")
+    private String baseUrl;
 
 
     @GetMapping("/dashboard/projects")
@@ -48,6 +54,30 @@ public class ProjectController
         model.addAttribute("pageTitle", "Projects");
 
         return "Dashboard/Project/project-index";
+    }
+
+    @GetMapping("/dashboard/projects/{slug}")
+    public String viewProject(
+            @PathVariable String slug,
+            Model model) {
+
+        Project project = projectService.findProjectBySlug(slug)
+                .orElseThrow(() ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        model.addAttribute("project", project);
+        model.addAttribute("baseUrl", baseUrl);
+        model.addAttribute("pageTitle", project.getProjectTitle());
+
+        return "Dashboard/Project/project-detail";
+    }
+
+    @GetMapping("/dashboard/projects/all")
+    public String allProjects(Model model) {
+        model.addAttribute("projects", projectService.findAllProjects());
+        model.addAttribute("pageTitle", "All Projects");
+
+        return "Dashboard/Project/all-projects";
     }
 
     @GetMapping("/dashboard/projects/add")

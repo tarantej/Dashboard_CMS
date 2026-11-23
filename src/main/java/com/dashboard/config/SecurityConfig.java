@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-//import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import com.dashboard.config.OAuth2LoginSuccessHandler;
 
@@ -63,7 +62,9 @@ public class SecurityConfig
                                 "/reset-password",
                                 "/oauth-signup",
                                 "/oauth-success",
-                                "/success"
+                                "/success",
+                                "/portfolio",
+                                "/portfolio/**"
                         ).permitAll()
 
                         // Static resources
@@ -77,6 +78,7 @@ public class SecurityConfig
 
                         // Error pages
                         .requestMatchers(
+                                "/error",
                                 "/400", "/401", "/403", "/404",
                                 "/405", "/408", "/409", "/422",
                                 "/429", "/500", "/502", "/503"

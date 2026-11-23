@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{Dashboard/fragments/header :: header('Project Details')}">
+
+</head>
+
+<body id="page-top">
+
+<div id="wrapper">
+
+    <div th:replace="~{Dashboard/fragments/sidebar :: sidebar}"></div>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+            <div th:replace="~{Dashboard/fragments/topbar :: topbar}"></div>
+
+            <div class="container-fluid">
+
+                <div th:replace="~{Dashboard/fragments/breadcrumb :: breadcrumb}"></div>
+
+                <!-- Project Heading -->
+                <div class="d-flex justify-content-between align-items-center mb-4" style="padding:1%;">
+                    <div class="flex-grow-1">
+                        <h1 class="h3 font-weight-bold text-dark"
+                            th:text="${project.projectTitle}">Project Title</h1>
+
+                        <p class="text-muted mb-0 project-short-description"
+                           th:text="${project.shortDescription}">
+                            Project description
+                        </p>
+                    </div>
+
+                    <a th:href="@{/projects/all}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        View All Projects
+                    </a>
+                </div>
+
+                <!-- Hero and Project Information -->
+                <div class="row mb-4">
+
+                    <div class="col-lg-8 mb-3 mb-lg-0">
+                        <div class="card shadow-sm border-0 h-100">
+                            <img th:src="@{${project.projectFeatureImage}}"
+                                 class="card-img-top"
+                                 alt="Project feature image"
+                                 style="object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <div class="card shadow-sm border-0 h-100 project-info-card">
+
+                            <div class="card-body">
+
+                                <!-- Project Type and Status -->
+                                <div class="project-badges">
+
+                <span class="badge bg-warning text-dark"
+                      th:text="${project.projectType.typeName}">
+                    Personal
+                </span>
+
+                                    <span class="badge bg-success"
+                                          th:text="${project.projectStatus.statusName}">
+                    Archived
+                </span>
+
+                                </div>
+
+                                <!-- Last Updated -->
+                                <div class="project-info-row">
+
+                                    <i class="bi bi-calendar3 info-icon"></i>
+
+                                    <span class="info-label">
+                    Last Updated
+                </span>
+
+                                    <span class="info-value"
+                                          th:text="${#dates.format(project.updatedAt, 'dd MMM yyyy')}">
+                    06 Nov 2026
+                </span>
+
+                                </div>
+
+                                <!-- Technologies -->
+                                <div class="project-info-row">
+
+                                    <i class="bi bi-stack info-icon"></i>
+
+                                    <span class="info-label">
+                                        Technologies
+                                    </span>
+
+                                    <div class="technology-tags">
+                                        <span class="badge bg-light text-dark border"
+                                              th:each="technology : ${project.technologies}"
+                                              th:text="${technology.technologyName}">
+                                            Technology
+                                        </span>
+
+                                        <span class="text-muted"
+                                              th:if="${#lists.isEmpty(project.technologies)}">
+                                            Not specified
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                                <!-- Public Project URL -->
+                                <div class="project-info-row">
+
+                                    <i class="bi bi-box-arrow-up-right info-icon"></i>
+
+                                    <span class="info-label">
+                                        Project URL
+                                    </span>
+
+                                    <span th:if="${project.publishStatus == 'PUBLISHED'}">
+                                        <a th:if="${project.publishStatus == 'PUBLISHED'}"
+                                           th:href="${baseUrl + '/portfolio/' + project.projectSlug}"
+                                           th:text="${baseUrl + '/portfolio/' + project.projectSlug}"
+                                           target="_blank"
+                                           rel="noopener noreferrer">
+                                        </a>
+                                    </span>
+
+                                    <span th:unless="${project.publishStatus == 'PUBLISHED'}"
+                                          class="text-muted">
+                                        Not published
+                                    </span>
+
+                                </div>
+
+                                <!-- Repository -->
+                                <div class="project-info-row">
+
+                                    <i class="bi bi-code-slash info-icon"></i>
+
+                                    <span class="info-label">
+                    Repository
+                </span>
+
+                                    <span th:if="${project.githubUrl != null and !#strings.isEmpty(project.githubUrl)}">
+    <a th:href="${project.githubUrl}"
+       th:text="${project.githubUrl}"
+       target="_blank"></a>
+</span>
+
+                                    <span th:unless="${project.githubUrl != null and !#strings.isEmpty(project.githubUrl)}">
+    Not Available
+</span>
+
+                                </div>
+
+                                <!-- Visit Live Project -->
+                                <a th:if="${project.demoUrl != null and !#strings.isEmpty(project.demoUrl)}"
+                                   th:href="${project.demoUrl}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="btn btn-outline-primary project-action">
+
+                                    <i class="bi bi-box-arrow-up-right me-2"></i>
+                                    Visit Live Project
+
+                                </a>
+
+                                <span th:unless="${project.demoUrl != null and !#strings.isEmpty(project.demoUrl)}"
+                                      class="text-muted small">
+                                    No external live project URL has been added.
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Project Detail Tabs -->
+                <div class="card shadow-sm border-0 mb-4">
+
+                    <div class="card-header bg-white p-0">
+                        <ul class="nav nav-tabs" role="tablist">
+
+                            <li class="nav-item">
+                                <button class="nav-link active"
+                                        id="overview-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#overview"
+                                        type="button"
+                                        role="tab">
+                                    Overview
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link"
+                                        id="features-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#features"
+                                        type="button"
+                                        role="tab">
+                                    Features
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link"
+                                        id="techstack-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#techstack"
+                                        type="button"
+                                        role="tab">
+                                    Tech Stack
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link"
+                                        id="gallery-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#gallery"
+                                        type="button"
+                                        role="tab">
+                                    Gallery
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link"
+                                        id="details-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#details"
+                                        type="button"
+                                        role="tab">
+                                    Details
+                                </button>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="tab-content">
+
+                            <!-- Overview -->
+                            <div class="tab-pane fade show active" id="overview">
+
+                                <div class="row">
+
+                                    <div class="col-lg-8">
+                                        <h4 class="font-weight-bold mb-3">
+                                            Project Overview
+                                        </h4>
+
+                                        <p th:text="${project.projectDescription}">
+                                            Project description
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Features -->
+                            <div class="tab-pane fade" id="features">
+                                <h4 class="font-weight-bold mb-3">Project Features</h4>
+
+                                <p class="text-muted mb-0">
+                                    No features have been added for this project yet.
+                                </p>
+                            </div>
+
+                            <!-- Tech Stack -->
+                            <div class="tab-pane fade" id="techstack">
+                                <h4 class="font-weight-bold mb-3">Technology Stack</h4>
+
+                                <p>
+                                    Technologies and tools used in this project:
+                                </p>
+
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge badge-light border p-2"
+                                          th:each="technology : ${project.technologies}"
+                                          th:text="${technology.technologyName}">
+                                        Technology
+                                    </span>
+                                </div>
+
+                                <p th:if="${#lists.isEmpty(project.technologies)}"
+                                   class="text-muted">
+                                    No technologies have been associated with this project yet.
+                                </p>
+                            </div>
+
+                            <!-- Gallery -->
+                            <div class="tab-pane fade" id="gallery">
+                                <h4 class="font-weight-bold mb-3">Project Gallery</h4>
+
+                                <p class="text-muted mb-0">
+                                    No gallery images are available for this project yet.
+                                </p>
+                            </div>
+
+                            <!-- Details -->
+                            <div class="tab-pane fade" id="details">
+                                <h4 class="font-weight-bold mb-3">Project Details</h4>
+
+                                <p class="text-muted mb-0">
+                                    Additional project details have not been added yet.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div th:replace="~{Dashboard/fragments/copyright :: copyright}"></div>
+
+    </div>
+
+</div>
+
+<div th:replace="~{Dashboard/fragments/scrolltotop :: scrolltotop}"></div>
+<div th:replace="~{Dashboard/fragments/logout-modal :: logout-modal}"></div>
+<div th:replace="~{Dashboard/fragments/footer :: footer}"></div>
+
+</body>
+</html>
