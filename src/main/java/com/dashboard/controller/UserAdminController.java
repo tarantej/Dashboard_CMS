@@ -1,13 +1,11 @@
 package com.dashboard.controller;
 
 import com.dashboard.service.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.ui.Model;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import com.dashboard.DashboardUsers;
 
 import java.util.ArrayList;
@@ -34,22 +32,18 @@ public class UserAdminController
             @RequestParam(defaultValue = "") String role,
             @RequestParam(defaultValue = "") String roleGroup,
             @RequestParam(defaultValue = "") String provider,
-            @RequestParam(defaultValue = "0") int page,
             Model model) {
 
-        Pageable pageable = PageRequest.of(page, 10);
-
-        Page<DashboardUsers> users =
+        List<DashboardUsers> allUsers =
                 userService.findUsers(
                         search,
                         role,
                         roleGroup,
-                        provider,
-                        pageable);
+                        provider);
 
         List<UserRole> roles = userService.findAllRoles();
 
-        model.addAttribute("users", users);
+        model.addAttribute("allUsers", allUsers);
         model.addAttribute("roles", roles);
         model.addAttribute("search", search);
         model.addAttribute("selectedRole", role);
@@ -97,6 +91,50 @@ public class UserAdminController
 
             return "redirect:/admin/users/add";
         }
+    }
+
+    @GetMapping("/admin/users/view/{id}")
+    public String viewUser(
+            @PathVariable Integer id,
+            Model model,
+            Authentication authentication) {
+
+        // User whose profile is being viewed
+        DashboardUsers user = userService.getUserById(id);
+
+        // User currently logged in
+        DashboardUsers currentUser =
+                userService.getUserByUsername(authentication.getName());
+
+        // Target user's profile details
+        model.addAttribute("username", user.getUsername());
+
+        model.addAttribute("first_name", user.getFirstName());
+        model.addAttribute("last_name", user.getLastName());
+        model.addAttribute("email", user.getEmail());
+        model.addAttribute("user_role", user.getUserRole());
+
+        model.addAttribute("phone_number", user.getPhoneNumber());
+        model.addAttribute("bio", user.getUserBio());
+
+        model.addAttribute("city", user.getUserCity());
+        model.addAttribute("country", user.getUserCountry());
+
+        model.addAttribute("profile_picture", user.getProfilePicture());
+        model.addAttribute("oauth_provider", user.getOauthProvider());
+        model.addAttribute("oauth_picture", user.getOauthPicture());
+
+        model.addAttribute("created_at", user.getCreatedAt());
+        model.addAttribute("updated_at", user.getUpdatedAt());
+
+        // Authenticated user's dashboard identity
+        model.addAttribute("currentUserFirstName", currentUser.getFirstName());
+        model.addAttribute("currentUserProfilePicture",
+                currentUser.getProfilePicture());
+
+        // Keep the remaining target-user profile attributes here
+
+        return "Dashboard/User/profile";
     }
 
     @GetMapping("/admin/users/edit/{id}")

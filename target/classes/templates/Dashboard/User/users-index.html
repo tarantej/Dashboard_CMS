@@ -62,7 +62,7 @@
                                    th:href="@{/admin/users(search=${search})}">
                                     All Users
                                     <span class="badge badge-secondary"
-                                          th:text="${users.totalElements}">0</span>
+                                          th:text="${#lists.size(allUsers)}">0</span>
                                 </a>
                             </li>
 
@@ -195,48 +195,10 @@
 
                                     </select>
 
-                                </form>
-
-                            </div>
-
-                            <!-- Search -->
-                            <div class="col-lg-4">
-
-                                <form th:action="@{/admin/users}"
-                                      method="get">
-
-                                    <input type="hidden"
-                                           name="role"
-                                           th:value="${selectedRole}">
-
-                                    <input type="hidden"
-                                           name="roleGroup"
-                                           th:value="${selectedRoleGroup}">
-
-                                    <div class="input-group">
-
-                                        <input type="text"
-                                               name="search"
-                                               class="form-control"
-                                               placeholder="Search username or email..."
-                                               th:value="${search}">
-
-                                        <div class="input-group-append">
-
-                                            <button type="submit"
-                                                    class="btn btn-primary">
-                                                <i class="fas fa-search mr-1"></i>
-                                                Search
-                                            </button>
-
-                                            <a th:href="@{/admin/users}"
-                                               class="btn btn-secondary">
-                                                Reset
-                                            </a>
-
-                                        </div>
-
-                                    </div>
+                                    <a th:href="@{/admin/users}"
+                                       class="btn btn-secondary">
+                                        <i class="bi bi-arrow-counterclockwise me-1"></i> Reset
+                                    </a>
 
                                 </form>
 
@@ -247,9 +209,10 @@
                         <!-- Users Table -->
                         <div class="table-responsive">
 
-                            <table class="table table-hover align-middle">
+                            <table id="usersTable"
+                                   class="table table-bordered table-hover align-middle">
 
-                                <thead class="thead-light">
+                                <thead class="table-light">
 
                                 <tr>
                                     <th style="width: 35px;">
@@ -271,7 +234,7 @@
                                 <tbody>
 
                                 <!-- User Rows -->
-                                <tr th:each="user : ${users.content}">
+                                <tr th:each="user : ${allUsers}">
 
                                     <!-- Checkbox -->
                                     <td>
@@ -381,21 +344,6 @@
 
                                 </tr>
 
-                                <!-- Empty State -->
-                                <tr th:if="${users.empty}">
-
-                                    <td colspan="8"
-                                        class="text-center text-muted py-5">
-
-                                        <i class="fas fa-users fa-2x mb-3"></i>
-
-                                        <p class="mb-0">
-                                            No users found.
-                                        </p>
-
-                                    </td>
-
-                                </tr>
 
                                 </tbody>
 
@@ -403,86 +351,7 @@
 
                         </div>
 
-                        <!-- Results and Pagination -->
-                        <div class="d-flex justify-content-between
-                                    align-items-center mt-4">
 
-                            <!-- Results Count -->
-                            <span class="text-muted small"
-                                  th:text="${'Showing '
-                                    + users.numberOfElements
-                                    + ' users on this page, '
-                                    + users.totalElements
-                                    + ' total users'}">
-                                Showing users
-                            </span>
-
-                            <!-- Pagination -->
-                            <nav th:if="${users.totalPages > 1}">
-
-                                <ul class="pagination mb-0">
-
-                                    <!-- First Page -->
-                                    <li class="page-item"
-                                        th:classappend="${users.first} ? 'disabled'">
-
-                                        <a class="page-link"
-                                           th:href="@{/admin/users(page=0, search=${search}, role=${selectedRole},roleGroup=${selectedRoleGroup})}">
-                                            <i class="fas fa-angle-double-left"></i>
-                                        </a>
-
-                                    </li>
-
-                                    <!-- Previous Page -->
-                                    <li class="page-item"
-                                        th:classappend="${users.first} ? 'disabled'">
-
-                                        <a class="page-link"
-                                           th:href="@{/admin/users(page=${users.number - 1}, search=${search}, role=${selectedRole}, roleGroup=${selectedRoleGroup})}">
-                                            <i class="fas fa-chevron-left"></i>
-                                        </a>
-
-                                    </li>
-
-                                    <!-- Page Numbers -->
-                                    <li class="page-item"
-                                        th:each="pageNumber : ${#numbers.sequence(0, users.totalPages - 1)}"
-                                        th:classappend="${pageNumber == users.number} ? 'active'">
-
-                                        <a class="page-link"
-                                           th:href="@{/admin/users(page=${pageNumber}, search=${search}, role=${selectedRole},roleGroup=${selectedRoleGroup})}"
-                                           th:text="${pageNumber + 1}">
-                                        </a>
-
-                                    </li>
-
-                                    <!-- Next Page -->
-                                    <li class="page-item"
-                                        th:classappend="${users.last} ? 'disabled'">
-
-                                        <a class="page-link"
-                                           th:href="@{/admin/users(page=${users.number + 1}, search=${search}, role=${selectedRole}, roleGroup=${selectedRoleGroup})}">
-                                            <i class="fas fa-chevron-right"></i>
-                                        </a>
-
-                                    </li>
-
-                                    <!-- Last Page -->
-                                    <li class="page-item"
-                                        th:classappend="${users.last} ? 'disabled'">
-
-                                        <a class="page-link"
-                                           th:href="@{/admin/users(page=${users.totalPages - 1}, search=${search}, role=${selectedRole}, roleGroup=${selectedRoleGroup})}">
-                                            <i class="fas fa-angle-double-right"></i>
-                                        </a>
-
-                                    </li>
-
-                                </ul>
-
-                            </nav>
-
-                        </div>
 
                     </div>
                     <!-- End Card Body -->
@@ -517,37 +386,84 @@
 <!-- User Table Scripts -->
 <script>
 
-    // Select all users on the current page
-    const selectAllUsers = document.getElementById('selectAllUsers');
 
-    if (selectAllUsers) {
+    document.addEventListener('DOMContentLoaded', function () {
 
-        selectAllUsers.addEventListener('change', function () {
+        const table = new DataTable('#usersTable', {
 
-            document.querySelectorAll('.user-checkbox').forEach(checkbox => {
-                checkbox.checked = this.checked;
-            });
+            pageLength: 10,
 
-        });
+            lengthMenu: [10, 25, 50, 100],
 
-    }
+            ordering: true,
+            searching: true,
+            paging: true,
+            info: true,
 
-    // Update Select All when individual users are selected
-    document.querySelectorAll('.user-checkbox').forEach(checkbox => {
+            order: [ [1, 'asc'] ],
 
-        checkbox.addEventListener('change', function () {
+            responsive: true,
 
-            const allCheckboxes = document.querySelectorAll('.user-checkbox');
-            const checkedCheckboxes = document.querySelectorAll('.user-checkbox:checked');
+            columnDefs: [
+                {
+                    orderable: false,
+                    searchable: false,
+                    targets: [0, 7]
+                }
+            ],
 
-            if (selectAllUsers) {
-                selectAllUsers.checked =
-                    allCheckboxes.length === checkedCheckboxes.length;
+            language: {
+                emptyTable: "No users found.",
+                zeroRecords: "No matching users found."
             }
 
         });
 
+        // Select all users on the current DataTables page
+        const selectAllUsers = document.getElementById('selectAllUsers');
+
+        if (selectAllUsers) {
+
+            selectAllUsers.addEventListener('change', function () {
+
+                table.rows({ page: 'current' }).nodes().to$()
+                    .find('.user-checkbox')
+                    .prop('checked', this.checked);
+
+            });
+
+        }
+
+        // Individual checkbox selection
+        document.querySelector('#usersTable tbody')
+            .addEventListener('change', function (event) {
+
+                if (event.target.classList.contains('user-checkbox')) {
+
+                    const checkboxes = table.rows({ page: 'current' })
+                        .nodes().to$().find('.user-checkbox');
+
+                    const checked = checkboxes.filter(':checked');
+
+                    if (selectAllUsers) {
+                        selectAllUsers.checked =
+                            checkboxes.length > 0 &&
+                            checkboxes.length === checked.length;
+                    }
+
+                }
+
+            });
+
+        // Reset Select All when changing pages
+        table.on('draw', function () {
+            if (selectAllUsers) {
+                selectAllUsers.checked = false;
+            }
+        });
+
     });
+
 
 </script>
 

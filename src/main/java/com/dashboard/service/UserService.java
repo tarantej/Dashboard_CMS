@@ -71,17 +71,15 @@ public class UserService {
                         pageable);
     }
 
-    public Page<DashboardUsers> findUsers(
+    public List<DashboardUsers> findUsers(
             String search,
             String role,
             String roleGroup,
-            String provider,
-            Pageable pageable) {
+            String provider) {
 
         Set<String> administratorRoles =
                 Set.of("SUPER_ADMIN", "ADMINISTRATOR");
 
-        // Start with all roles stored in the database.
         List<String> availableRoles = userRoleRepository
                 .findAllByOrderByIdAsc()
                 .stream()
@@ -90,7 +88,6 @@ public class UserService {
 
         List<String> groupRoles;
 
-        // Determine the selected role group.
         if (roleGroup == null || roleGroup.isBlank()) {
             groupRoles = availableRoles;
         } else {
@@ -116,11 +113,10 @@ public class UserService {
                     break;
 
                 default:
-                    return Page.empty(pageable);
+                    return List.of();
             }
         }
 
-        // Apply the individual role dropdown if selected.
         if (role != null && !role.isBlank()) {
             groupRoles = groupRoles.stream()
                     .filter(role::equals)
@@ -128,24 +124,30 @@ public class UserService {
         }
 
         if (groupRoles.isEmpty()) {
-            return Page.empty(pageable);
+            return List.of();
         }
 
         String searchTerm =
                 search == null ? "" : search.trim();
 
         String providerFilter =
-                provider == null ? "" : provider.trim().toUpperCase(Locale.ROOT);
+                provider == null ? "" :
+                        provider.trim().toUpperCase(Locale.ROOT);
 
         return userRepository.findByRolesSearchAndProvider(
                 groupRoles,
                 searchTerm,
-                providerFilter,
-                pageable);
+                providerFilter);
     }
 
     public DashboardUsers getUserById(Integer id) {
         return userRepository.findById(id)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("User not found"));
+    }
+
+    public DashboardUsers getUserByUsername(String username) {
+        return userRepository.findByUsername(username)
                 .orElseThrow(() ->
                         new IllegalArgumentException("User not found"));
     }

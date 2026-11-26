@@ -163,10 +163,13 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600">Hi, <span th:text="${first_name}"></span></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600">
+                    Hi, <span th:text="${currentUserFirstName}"></span>
+                </span>
                 <img class="img-profile rounded-circle"
-                     th:src="${profile_picture != null} ? @{'/uploads/profile/'
-                                                + ${profile_picture}} : @{'/img/user-avatar-3.png'}">
+                     th:src="${currentUserProfilePicture != null}
+        ? @{'/uploads/profile/' + ${currentUserProfilePicture}}
+        : @{'/img/default-avatar.png'}">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

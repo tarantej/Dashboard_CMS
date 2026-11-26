@@ -36,16 +36,20 @@ public interface UserRepository extends JpaRepository<DashboardUsers, Integer> {
     @Query("""
     SELECT u FROM DashboardUsers u
     WHERE u.userRole IN :roles
-    AND (:provider = '' OR u.oauthProvider = :provider)
+    AND (
+        :provider = ''
+        OR UPPER(COALESCE(NULLIF(TRIM(u.oauthProvider), ''), 'LOCAL'))
+           = UPPER(:provider)
+    )
     AND (
         :search = ''
         OR LOWER(u.username) LIKE LOWER(CONCAT('%', :search, '%'))
         OR LOWER(u.email) LIKE LOWER(CONCAT('%', :search, '%'))
     )
     """)
-    Page<DashboardUsers> findByRolesSearchAndProvider(
+    List<DashboardUsers> findByRolesSearchAndProvider(
             @Param("roles") List<String> roles,
             @Param("search") String search,
-            @Param("provider") String provider,
-            Pageable pageable);
+            @Param("provider") String provider);
+
 }
